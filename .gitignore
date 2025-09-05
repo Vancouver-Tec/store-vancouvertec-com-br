@@ -1,0 +1,191 @@
+# WordPress Core
+/wp-admin/
+/wp-includes/
+/wp-content/index.php
+/wp-content/languages/
+/wp-content/plugins/index.php
+/wp-content/themes/index.php
+
+# WordPress Config
+wp-config.php
+wp-config-sample.php
+.htaccess
+
+# WordPress Salts (if in separate file)
+/wp-salts.php
+
+# WordPress Debug
+debug.log
+error_log
+
+# WordPress Cache
+/wp-content/cache/
+/wp-content/w3tc-config/
+/wp-content/advanced-cache.php
+/wp-content/object-cache.php
+
+# WordPress Backup
+*.sql
+*.tar.gz
+*.zip
+/backup/
+/backups/
+
+# WordPress Updates
+/.wordpress-org/
+/wp-content/upgrade/
+/wp-content/uploads/wpo_wcpdf/
+
+# Plugin Specific
+/wp-content/plugins/akismet/
+/wp-content/plugins/hello.php
+/wp-content/plugins/wordpress-importer/
+
+# Theme Specific
+/wp-content/themes/twentytwentyone/
+/wp-content/themes/twentytwentytwo/
+/wp-content/themes/twentytwentythree/
+/wp-content/themes/twentytwentyfour/
+
+# Uploads (keep structure, ignore files)
+/wp-content/uploads/
+!/wp-content/uploads/.gitkeep
+
+# Node.js / NPM
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Build Output
+/dist/
+/build/
+/assets/build/
+
+# Environment Files
+.env
+.env.local
+.env.production
+.env.development
+.env.staging
+
+# IDE/Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# Logs
+logs/
+*.log
+
+# Runtime Data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Directory for instrumented libs
+lib-cov/
+
+# Coverage Directory
+coverage/
+
+# Dependency Directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# Sass
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+
+# Composer
+/vendor/
+composer.lock
+
+# Temporary Files
+*.tmp
+*.temp
+*.bak
+*.orig
+
+# VancouverTec Store Specific
+/wp-content/themes/vancouvertec-store/assets/src/
+/wp-content/plugins/vancouvertec-digital-manager/assets/src/
+
+# Local Development
+/local/
+/dev/
+/staging/
+
+# SSL Certificates
+*.pem
+*.key
+*.crt
+*.csr
+
+# Database Exports
+*.sql
+*.sql.gz
+
+# Server Config
+.htpasswd
+web.config
+
+# Deployment
+/deploy/
+deployment.log
+
+# Testing
+/tests/coverage/
+phpunit.xml
+.phpunit.result.cache
+
+# Documentation Build
+/docs/_site/
+/docs/.jekyll-cache/
+
+# Temporary WordPress Files
+/wp-content/w3tc/
+/wp-content/et-cache/
+/wp-content/updraft/
+
+# WooCommerce
+/wp-content/uploads/woocommerce_uploads/
+/woocommerce.log
+
+# Elementor
+/wp-content/uploads/elementor/
+
+# Security
+*.log
+auth.log
+access.log
+error.log
