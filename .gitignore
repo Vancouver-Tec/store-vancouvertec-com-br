@@ -1,191 +1,350 @@
-# WordPress Core
-/wp-admin/
-/wp-includes/
-/wp-content/index.php
-/wp-content/languages/
-/wp-content/plugins/index.php
-/wp-content/themes/index.php
+# VancouverTec Store - .gitignore
+# WordPress & WooCommerce Complete Setup
 
-# WordPress Config
+# ===========================================
+# WordPress Core Files
+# ===========================================
+wp-admin/
+wp-includes/
+wp-content/index.php
+wp-content/languages/
+wp-content/upgrade/
+wp-content/uploads/
+xmlrpc.php
+license.txt
+readme.html
+wp-activate.php
+wp-blog-header.php
+wp-comments-post.php
+wp-cron.php
+wp-links-opml.php
+wp-load.php
+wp-login.php
+wp-mail.php
+wp-settings.php
+wp-signup.php
+wp-trackback.php
+
+# ===========================================
+# Configuration Files
+# ===========================================
 wp-config.php
-wp-config-sample.php
+wp-config-local.php
+wp-config-production.php
 .htaccess
+web.config
 
-# WordPress Salts (if in separate file)
-/wp-salts.php
+# ===========================================
+# Database & Backups
+# ===========================================
+*.sql
+*.sql.gz
+*.sql.bz2
+backups/
+database/
+db-backup/
+*.backup
+*.bak
 
-# WordPress Debug
+# ===========================================
+# Environment & Credentials
+# ===========================================
+.env
+.env.local
+.env.production
+.env.staging
+.env.development
+credentials.json
+secrets.json
+config.json
+deploy-config.json
+
+# ===========================================
+# Logs & Debug Files
+# ===========================================
+*.log
+logs/
 debug.log
 error_log
+access_log
+wp-content/debug.log
+wp-content/cache/
+wp-content/backup-db/
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+wp-content/cache/
+wp-content/backups/
 
-# WordPress Cache
-/wp-content/cache/
-/wp-content/w3tc-config/
-/wp-content/advanced-cache.php
-/wp-content/object-cache.php
+# ===========================================
+# Cache & Temporary Files
+# ===========================================
+*.tmp
+*.temp
+cache/
+tmp/
+temp/
+wp-content/w3tc-config/
+wp-content/cache/
+wp-content/backup-*
+wp-content/backups/
+wp-content/managewp/
+wp-content/wflogs/
 
-# WordPress Backup
-*.sql
-*.tar.gz
-*.zip
-/backup/
-/backups/
+# ===========================================
+# Plugin & Theme Specific
+# ===========================================
+# Elementor
+wp-content/uploads/elementor/
+wp-content/et-cache/
+wp-content/cache/et/
 
-# WordPress Updates
-/.wordpress-org/
-/wp-content/upgrade/
-/wp-content/uploads/wpo_wcpdf/
+# WooCommerce
+wp-content/uploads/wc-logs/
+wp-content/uploads/woocommerce_uploads/
 
-# Plugin Specific
-/wp-content/plugins/akismet/
-/wp-content/plugins/hello.php
-/wp-content/plugins/wordpress-importer/
+# Security Plugins
+wp-content/uploads/sucuri/
+wp-content/uploads/wordfence-waf.php
+wp-content/wflogs/
+wp-content/uploads/ithemes-security/
 
-# Theme Specific
-/wp-content/themes/twentytwentyone/
-/wp-content/themes/twentytwentytwo/
-/wp-content/themes/twentytwentythree/
-/wp-content/themes/twentytwentyfour/
+# SEO Plugins
+wp-content/uploads/all-in-one-seo-pack/
+wp-content/uploads/rank-math/
 
-# Uploads (keep structure, ignore files)
-/wp-content/uploads/
-!/wp-content/uploads/.gitkeep
+# Backup Plugins
+wp-content/ai1wm-backups/
+wp-content/updraft/
+wp-content/backups-dup-lite/
 
-# Node.js / NPM
+# ===========================================
+# Development Tools
+# ===========================================
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 package-lock.json
 yarn.lock
-
-# Build Output
-/dist/
-/build/
-/assets/build/
-
-# Environment Files
-.env
-.env.local
-.env.production
-.env.development
-.env.staging
-
-# IDE/Editor Files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-.DS_Store
-Thumbs.db
-
-# OS Generated Files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Desktop.ini
-
-# Logs
-logs/
-*.log
-
-# Runtime Data
-pids/
-*.pid
-*.seed
-*.pid.lock
-
-# Directory for instrumented libs
-lib-cov/
-
-# Coverage Directory
-coverage/
-
-# Dependency Directories
-jspm_packages/
-
-# Optional npm cache directory
 .npm
-
-# Optional REPL history
-.node_repl_history
-
-# Output of 'npm pack'
-*.tgz
-
-# Yarn Integrity file
 .yarn-integrity
 
-# Sass
+# Composer
+vendor/
+composer.lock
+
+# Grunt & Gulp
+.grunt
+.gulp
+Gruntfile.js
+gulpfile.js
+package.json
+.bowerrc
+bower_components/
+
+# SASS/SCSS
 .sass-cache/
 *.css.map
 *.sass.map
 *.scss.map
 
-# Composer
-/vendor/
-composer.lock
+# ===========================================
+# IDE & Editor Files
+# ===========================================
+# Visual Studio Code
+.vscode/
+.history/
+*.code-workspace
 
-# Temporary Files
-*.tmp
-*.temp
-*.bak
-*.orig
+# PHPStorm
+.idea/
+*.iml
+*.ipr
+*.iws
 
-# VancouverTec Store Specific
-/wp-content/themes/vancouvertec-store/assets/src/
-/wp-content/plugins/vancouvertec-digital-manager/assets/src/
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
 
-# Local Development
-/local/
-/dev/
-/staging/
+# Vim
+*.swp
+*.swo
+*~
+.netrwhist
 
-# SSL Certificates
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ===========================================
+# Operating System Files
+# ===========================================
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Linux
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ===========================================
+# Version Control
+# ===========================================
+.git/
+.svn/
+.hg/
+.bzr/
+CVS/
+.cvs/
+
+# ===========================================
+# Deployment & Build
+# ===========================================
+dist/
+build/
+.deploy/
+deploy/
+releases/
+shared/
+.deployment
+.deployments/
+
+# ===========================================
+# Security & Sensitive Data
+# ===========================================
+wp-config-sample.php
+install.php
+upgrade.php
+readme.html
+license.txt
+**/wp-admin/install.php
+**/wp-admin/upgrade.php
+
+# SSH Keys
 *.pem
 *.key
+*.pub
+id_rsa*
+known_hosts
+authorized_keys
+
+# SSL Certificates
 *.crt
-*.csr
+*.cert
+*.ca-bundle
+*.p7b
+*.p7c
+*.pfx
 
-# Database Exports
-*.sql
-*.sql.gz
+# ===========================================
+# VancouverTec Specific
+# ===========================================
+# Local Development
+local-config.php
+local-uploads/
+local-database/
 
-# Server Config
-.htpasswd
-web.config
+# Production Specific
+prod-uploads/
+production-backups/
+vps-config/
 
-# Deployment
-/deploy/
-deployment.log
+# Scripts de Deploy (manter apenas templates)
+deploy-*.sh
+!deploy-template.sh
+!scripts/
 
-# Testing
-/tests/coverage/
-phpunit.xml
-.phpunit.result.cache
+# Assets compilados (manter source)
+themes/vancouvertec-store/assets/dist/
+plugins/vancouvertec-digital-manager/assets/dist/
+*.min.css
+*.min.js
+!*.min.js (manter bibliotecas externas)
 
-# Documentation Build
-/docs/_site/
-/docs/.jekyll-cache/
+# Uploads específicos
+wp-content/uploads/vancouvertec/
+wp-content/uploads/digital-products/
+wp-content/uploads/course-materials/
+wp-content/uploads/certificates/
 
-# Temporary WordPress Files
-/wp-content/w3tc/
-/wp-content/et-cache/
-/wp-content/updraft/
+# Logs específicos do projeto
+vt-debug.log
+digital-manager.log
+download-logs/
+course-progress.log
 
-# WooCommerce
-/wp-content/uploads/woocommerce_uploads/
-/woocommerce.log
+# ===========================================
+# Third-party Plugins (updates)
+# ===========================================
+wp-content/plugins/akismet/
+wp-content/plugins/hello.php
+wp-content/plugins/woocommerce/
+wp-content/plugins/elementor/
+wp-content/plugins/elementor-pro/
+wp-content/plugins/yoast-seo/
+wp-content/plugins/wordfence/
+wp-content/plugins/wp-super-cache/
+wp-content/plugins/w3-total-cache/
 
-# Elementor
-/wp-content/uploads/elementor/
+# Keep custom plugins
+!wp-content/plugins/vancouvertec-digital-manager/
 
-# Security
-*.log
-auth.log
-access.log
-error.log
+# ===========================================
+# Keep Important Files
+# ===========================================
+# Keep custom theme
+!wp-content/themes/vancouvertec-store/
+
+# Keep configuration templates
+!config/
+!scripts/
+!docs/
+
+# Keep essential WordPress files
+!wp-content/
+!wp-content/themes/
+!wp-content/plugins/
+!wp-content/mu-plugins/
+
+# Keep project structure
+!README.md
+!.gitignore
+!composer.json
+!package.json (if needed)
