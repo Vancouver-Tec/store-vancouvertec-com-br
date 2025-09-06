@@ -1,0 +1,48 @@
+/*
+Theme Name: VancouverTec Store
+Description: Tema premium para loja de produtos digitais da VancouverTec. Performance 99+, SEO avançado e design moderno.
+Author: VancouverTec
+Version: 1.0.0
+Requires at least: 6.4
+Tested up to: 6.5
+Requires PHP: 8.0
+License: Proprietary
+License URI: https://vancouvertec.com.br/license
+Text Domain: vancouvertec
+Domain Path: /languages
+Tags: woocommerce, e-commerce, digital-products, responsive, performance
+*/
+
+:root {
+  --vt-blue-600: #0066CC;
+  --vt-blue-700: #0052A3;
+  --vt-indigo-500: #6366F1;
+  --vt-success-500: #10B981;
+  --vt-neutral-100: #F5F5F5;
+  --vt-neutral-800: #1F2937;
+  --vt-font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --vt-font-secondary: 'Poppins', sans-serif;
+  --vt-space-xs: 0.5rem;
+  --vt-space-sm: 1rem;
+  --vt-space-md: 1.5rem;
+  --vt-space-lg: 2rem;
+  --vt-space-xl: 3rem;
+  --vt-radius-sm: 0.375rem;
+  --vt-radius-md: 0.5rem;
+  --vt-radius-lg: 0.75rem;
+}
+
+* { box-sizing: border-box; }
+body { 
+  font-family: var(--vt-font-primary);
+  line-height: 1.6;
+  color: var(--vt-neutral-800);
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.vt-primary-color { color: var(--vt-blue-600); }
+.vt-success-color { color: var(--vt-success-500); }
+.vt-bg-primary { background-color: var(--vt-blue-600); }
+.vt-bg-success { background-color: var(--vt-success-500); }
