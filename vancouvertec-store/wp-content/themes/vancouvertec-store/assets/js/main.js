@@ -1,43 +1,22 @@
 (function($) {
     'use strict';
     
-    const VTStore = {
-        init() {
-            console.log('VancouverTec Store - Tema carregado!');
-            this.setupPerformance();
-            this.setupLazyLoading();
-        },
+    $(document).ready(function() {
+        console.log('VancouverTec Store - Tema carregado com sucesso!');
         
-        setupPerformance() {
-            // Lazy loading para imagens
-            $('img').attr('loading', 'lazy');
-            
-            // Preload recursos críticos
-            const criticalCSS = document.createElement('link');
-            criticalCSS.rel = 'preload';
-            criticalCSS.href = vt_ajax.theme_url + '/style.css';
-            criticalCSS.as = 'style';
-            document.head.appendChild(criticalCSS);
-        },
+        // Performance: Lazy loading
+        $('img').attr('loading', 'lazy');
         
-        setupLazyLoading() {
-            if ('IntersectionObserver' in window) {
-                const images = document.querySelectorAll('img[data-src]');
-                const imageObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-                            img.src = img.dataset.src;
-                            img.removeAttribute('data-src');
-                            imageObserver.unobserve(img);
-                        }
-                    });
-                });
-                images.forEach(img => imageObserver.observe(img));
+        // Smooth scroll
+        $('a[href^="#"]').on('click', function(e) {
+            e.preventDefault();
+            const target = $(this.getAttribute('href'));
+            if (target.length) {
+                $('html, body').animate({
+                    scrollTop: target.offset().top - 80
+                }, 800);
             }
-        }
-    };
-    
-    $(document).ready(() => VTStore.init());
+        });
+    });
     
 })(jQuery);
