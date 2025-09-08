@@ -221,88 +221,117 @@ get_header(); ?>
 </section>
 
 
-<!-- 4. PRODUTOS EM PROMOÇÃO -->
-<section class="featured-products-section">
+<!-- 4. PRODUTOS REAIS DO WOOCOMMERCE -->
+<section class="real-products-section">
     <div class="container">
         <div class="section-header">
-            <div class="section-badge">⚡ OFERTAS LIMITADAS</div>
-            <h2 class="section-title">Produtos em Promoção</h2>
-            <p class="section-subtitle">Aproveite os descontos especiais antes que acabem!</p>
+            <div class="section-badge">🛒 NOSSOS PRODUTOS</div>
+            <h2 class="section-title">Produtos em Destaque</h2>
+            <p class="section-subtitle">Soluções digitais desenvolvidas para fazer seu negócio crescer</p>
         </div>
         
-        <div class="products-grid">
-            <div class="product-card featured">
-                <div class="product-badge">50% OFF</div>
-                <div class="product-image">
-                    <div class="product-icon">🌐</div>
+        <?php if (class_exists("WooCommerce")) : ?>
+            <div class="woo-products-grid">
+                <?php
+                $featured_products = wc_get_featured_product_ids();
+                if (empty($featured_products)) {
+                    // Se não há produtos em destaque, pegar os mais recentes
+                    $args = array(
+                        "post_type" => "product",
+                        "posts_per_page" => 6,
+                        "post_status" => "publish",
+                        "meta_query" => array(
+                            array(
+                                "key" => "_visibility",
+                                "value" => array("catalog", "visible"),
+                                "compare" => "IN"
+                            )
+                        )
+                    );
+                } else {
+                    $args = array(
+                        "post_type" => "product",
+                        "posts_per_page" => 6,
+                        "post__in" => $featured_products,
+                        "post_status" => "publish"
+                    );
+                }
+                
+                $products = new WP_Query($args);
+                
+                if ($products->have_posts()) :
+                    while ($products->have_posts()) : $products->the_post();
+                        global $product;
+                        $product_id = get_the_ID();
+                        $is_on_sale = $product->is_on_sale();
+                        $regular_price = $product->get_regular_price();
+                        $sale_price = $product->get_sale_price();
+                        $price_html = $product->get_price_html();
+                ?>
+                <div class="woo-product-card <?php echo $is_on_sale ? "on-sale" : ""; ?>">
+                    <?php if ($is_on_sale) : ?>
+                        <div class="sale-badge">
+                            <?php
+                            if ($regular_price && $sale_price) {
+                                $discount = round((($regular_price - $sale_price) / $regular_price) * 100);
+                                echo $discount . "% OFF";
+                            } else {
+                                echo "OFERTA";
+                            }
+                            ?>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <div class="woo-product-image">
+                        <a href="<?php the_permalink(); ?>">
+                            <?php if (has_post_thumbnail()) : ?>
+                                <?php the_post_thumbnail("medium", array("class" => "product-thumb")); ?>
+                            <?php else : ?>
+                                <div class="no-image">📦</div>
+                            <?php endif; ?>
+                        </a>
+                    </div>
+                    
+                    <div class="woo-product-content">
+                        <h3 class="woo-product-title">
+                            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                        </h3>
+                        
+                        <div class="woo-product-excerpt">
+                            <?php echo wp_trim_words(get_the_excerpt(), 15); ?>
+                        </div>
+                        
+                        <div class="woo-product-price">
+                            <?php echo $price_html; ?>
+                        </div>
+                        
+                        <div class="woo-product-actions">
+                            <?php woocommerce_template_loop_add_to_cart(); ?>
+                            <a href="<?php the_permalink(); ?>" class="view-product-btn">Ver Detalhes</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="product-content">
-                    <h3 class="product-title">Site WordPress Profissional</h3>
-                    <p class="product-description">Site completo com design moderno, responsivo e otimizado para SEO.</p>
-                    <div class="product-features">
-                        <span class="feature">✓ Design Responsivo</span>
-                        <span class="feature">✓ SEO Otimizado</span>
-                        <span class="feature">✓ Entrega 7 dias</span>
-                    </div>
-                    <div class="product-pricing">
-                        <span class="price-old">R$ 997</span>
-                        <span class="price-current">R$ 497</span>
-                    </div>
-                    <div class="product-urgency">
-                        <span class="urgency-text">⏰ Restam apenas 12 unidades!</span>
-                    </div>
-                    <a href="/produto/site-wordpress" class="product-btn">Comprar Agora</a>
+                <?php
+                    endwhile;
+                    wp_reset_postdata();
+                else :
+                ?>
+                <div class="no-products">
+                    <p>Nenhum produto encontrado. <a href="/wp-admin/post-new.php?post_type=product">Cadastre produtos</a> para exibir aqui.</p>
                 </div>
+                <?php endif; ?>
             </div>
             
-            <div class="product-card">
-                <div class="product-badge">40% OFF</div>
-                <div class="product-image">
-                    <div class="product-icon">🛒</div>
-                </div>
-                <div class="product-content">
-                    <h3 class="product-title">Loja Virtual Completa</h3>
-                    <p class="product-description">E-commerce profissional com sistema de pagamento e gestão.</p>
-                    <div class="product-features">
-                        <span class="feature">✓ WooCommerce</span>
-                        <span class="feature">✓ Pagamento Online</span>
-                        <span class="feature">✓ Dashboard Admin</span>
-                    </div>
-                    <div class="product-pricing">
-                        <span class="price-old">R$ 1.997</span>
-                        <span class="price-current">R$ 1.197</span>
-                    </div>
-                    <div class="product-urgency">
-                        <span class="urgency-text">⏰ Oferta termina em 2 dias!</span>
-                    </div>
-                    <a href="/produto/loja-virtual" class="product-btn">Comprar Agora</a>
-                </div>
+            <div class="products-cta">
+                <a href="<?php echo get_permalink(wc_get_page_id("shop")); ?>" class="view-all-products-btn">
+                    Ver Todos os Produtos
+                </a>
             </div>
-            
-            <div class="product-card">
-                <div class="product-badge">30% OFF</div>
-                <div class="product-image">
-                    <div class="product-icon">📱</div>
-                </div>
-                <div class="product-content">
-                    <h3 class="product-title">App Mobile Nativo</h3>
-                    <p class="product-description">Aplicativo para Android e iOS com design moderno.</p>
-                    <div class="product-features">
-                        <span class="feature">✓ Android + iOS</span>
-                        <span class="feature">✓ Design Nativo</span>
-                        <span class="feature">✓ Push Notifications</span>
-                    </div>
-                    <div class="product-pricing">
-                        <span class="price-old">R$ 2.497</span>
-                        <span class="price-current">R$ 1.747</span>
-                    </div>
-                    <div class="product-urgency">
-                        <span class="urgency-text">⏰ Últimas 5 vagas!</span>
-                    </div>
-                    <a href="/produto/app-mobile" class="product-btn">Comprar Agora</a>
-                </div>
+        <?php else : ?>
+            <div class="woocommerce-not-active">
+                <p>WooCommerce não está ativo. Ative o plugin para exibir produtos.</p>
             </div>
-        </div>
+        <?php endif; ?>
     </div>
 </section>
 
@@ -387,6 +416,80 @@ get_header(); ?>
                 <div class="stat-number">24h</div>
                 <div class="stat-label">Suporte Rápido</div>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5.5. ÚLTIMOS POSTS -->
+<section class="latest-posts-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Últimas Novidades</h2>
+            <p class="section-subtitle">Fique por dentro das tendências em tecnologia e negócios digitais</p>
+        </div>
+        
+        <div class="posts-grid">
+            <?php
+            $latest_posts = new WP_Query(array(
+                "post_type" => "post",
+                "posts_per_page" => 4,
+                "post_status" => "publish"
+            ));
+            
+            if ($latest_posts->have_posts()) :
+                while ($latest_posts->have_posts()) : $latest_posts->the_post();
+            ?>
+            <article class="post-card-home">
+                <div class="post-thumbnail">
+                    <a href="<?php the_permalink(); ?>">
+                        <?php if (has_post_thumbnail()) : ?>
+                            <?php the_post_thumbnail("medium", array("class" => "post-thumb")); ?>
+                        <?php else : ?>
+                            <div class="no-thumb">📰</div>
+                        <?php endif; ?>
+                    </a>
+                    <div class="post-category">
+                        <?php
+                        $categories = get_the_category();
+                        if (!empty($categories)) {
+                            echo esc_html($categories[0]->name);
+                        }
+                        ?>
+                    </div>
+                </div>
+                
+                <div class="post-content-home">
+                    <h3 class="post-title-home">
+                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                    </h3>
+                    
+                    <div class="post-excerpt-home">
+                        <?php echo wp_trim_words(get_the_excerpt(), 20); ?>
+                    </div>
+                    
+                    <div class="post-meta-home">
+                        <time datetime="<?php echo get_the_date("c"); ?>">
+                            <?php echo get_the_date(); ?>
+                        </time>
+                        <span class="read-time">5 min de leitura</span>
+                    </div>
+                    
+                    <a href="<?php the_permalink(); ?>" class="read-more-btn">Ler Mais</a>
+                </div>
+            </article>
+            <?php
+                endwhile;
+                wp_reset_postdata();
+            else :
+            ?>
+            <div class="no-posts">
+                <p>Nenhum post encontrado. <a href="/wp-admin/post-new.php">Criar primeiro post</a>.</p>
+            </div>
+            <?php endif; ?>
+        </div>
+        
+        <div class="posts-cta">
+            <a href="/blog" class="view-all-posts-btn">Ver Todos os Posts</a>
         </div>
     </div>
 </section>

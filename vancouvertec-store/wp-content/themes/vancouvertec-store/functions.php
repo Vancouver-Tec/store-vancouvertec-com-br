@@ -41,16 +41,24 @@ function vt_enqueue_assets() {
     
     wp_enqueue_style('vt-style', VT_THEME_URI . '/style.css', [], VT_THEME_VERSION);
     wp_enqueue_style('vt-front-page', VT_THEME_URI . '/assets/css/pages/front-page.css', ['vt-style'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-woo-home', VT_THEME_URI . '/assets/css/components/woocommerce-home.css', ['vt-front-page'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-woo-pages', VT_THEME_URI . '/assets/css/components/woocommerce-pages.css', ['vt-woo-home'], VT_THEME_VERSION);
     wp_enqueue_style('vt-header', VT_THEME_URI . '/assets/css/layouts/header.css', ['vt-style'], VT_THEME_VERSION);
     wp_enqueue_style('vt-front-page', VT_THEME_URI . '/assets/css/pages/front-page.css', ['vt-style'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-woo-home', VT_THEME_URI . '/assets/css/components/woocommerce-home.css', ['vt-front-page'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-woo-pages', VT_THEME_URI . '/assets/css/components/woocommerce-pages.css', ['vt-woo-home'], VT_THEME_VERSION);
     wp_enqueue_style('vt-header-botoes', VT_THEME_URI . '/assets/css/layouts/header-botoes-forcados.css', ['vt-header'], VT_THEME_VERSION);
     wp_enqueue_style('vt-footer', VT_THEME_URI . '/assets/css/layouts/footer.css', ['vt-header'], VT_THEME_VERSION);
     wp_enqueue_style('vt-header-botoes', VT_THEME_URI . '/assets/css/layouts/header-botoes-forcados.css', ['vt-header'], VT_THEME_VERSION);
     wp_enqueue_style('vt-responsive', VT_THEME_URI . '/assets/css/responsive.css', ['vt-footer'], VT_THEME_VERSION);
     wp_enqueue_style('vt-buttons', VT_THEME_URI . '/assets/css/components/buttons.css', ['vt-style'], VT_THEME_VERSION);
     wp_enqueue_style('vt-front-page', VT_THEME_URI . '/assets/css/pages/front-page.css', ['vt-style'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-woo-home', VT_THEME_URI . '/assets/css/components/woocommerce-home.css', ['vt-front-page'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-woo-pages', VT_THEME_URI . '/assets/css/components/woocommerce-pages.css', ['vt-woo-home'], VT_THEME_VERSION);
     wp_enqueue_style('vt-header', VT_THEME_URI . '/assets/css/layouts/header.css', ['vt-style'], VT_THEME_VERSION);
     wp_enqueue_style('vt-front-page', VT_THEME_URI . '/assets/css/pages/front-page.css', ['vt-style'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-woo-home', VT_THEME_URI . '/assets/css/components/woocommerce-home.css', ['vt-front-page'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-woo-pages', VT_THEME_URI . '/assets/css/components/woocommerce-pages.css', ['vt-woo-home'], VT_THEME_VERSION);
     wp_enqueue_style('vt-header-botoes', VT_THEME_URI . '/assets/css/layouts/header-botoes-forcados.css', ['vt-header'], VT_THEME_VERSION);
     wp_enqueue_style('vt-footer', VT_THEME_URI . '/assets/css/layouts/footer.css', ['vt-header'], VT_THEME_VERSION);
     wp_enqueue_style('vt-header-botoes', VT_THEME_URI . '/assets/css/layouts/header-botoes-forcados.css', ['vt-header'], VT_THEME_VERSION);
