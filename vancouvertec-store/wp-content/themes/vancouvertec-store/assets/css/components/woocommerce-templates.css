@@ -1,0 +1,271 @@
+/* VancouverTec Store - WooCommerce Templates */
+
+/* CHECKOUT PAGE */
+.vt-checkout-page {
+  padding: 2rem 0 5rem;
+  min-height: 70vh;
+}
+
+.vt-checkout-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.vt-checkout-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1F2937;
+  margin-bottom: 2rem;
+}
+
+.vt-checkout-steps {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.vt-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.vt-step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #E5E7EB;
+  color: #6B7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.vt-step.active .vt-step-number {
+  background: var(--vt-blue-600);
+  color: white;
+}
+
+.vt-step-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6B7280;
+}
+
+.vt-step.active .vt-step-label {
+  color: var(--vt-blue-600);
+}
+
+.vt-checkout-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.vt-checkout-form {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.vt-order-review {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+}
+
+/* MY ACCOUNT */
+.vt-my-account-page {
+  padding: 2rem 0 5rem;
+}
+
+.vt-account-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.vt-account-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1F2937;
+  margin-bottom: 0.5rem;
+}
+
+.vt-account-welcome {
+  font-size: 1.125rem;
+  color: #6B7280;
+}
+
+.vt-account-content {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
+}
+
+.woocommerce-MyAccount-navigation {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+}
+
+.woocommerce-MyAccount-navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.woocommerce-MyAccount-navigation li {
+  margin-bottom: 0.5rem;
+}
+
+.vt-account-nav-link {
+  display: block;
+  padding: 1rem;
+  color: #6B7280;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.vt-account-nav-link:hover,
+.is-active .vt-account-nav-link {
+  background: #F0F9FF;
+  color: var(--vt-blue-600);
+}
+
+.woocommerce-MyAccount-content {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* CART PAGE */
+.vt-cart-page {
+  padding: 2rem 0 5rem;
+  min-height: 70vh;
+}
+
+.vt-cart-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1F2937;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.vt-cart-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+}
+
+.vt-cart-items {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.vt-cart-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.vt-cart-table th {
+  padding: 1rem;
+  background: #F9FAFB;
+  font-weight: 700;
+  color: #374151;
+  border-bottom: 2px solid #E5E7EB;
+}
+
+.vt-cart-table td {
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid #E5E7EB;
+  vertical-align: middle;
+}
+
+.vt-cart-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.vt-cart-totals {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+}
+
+/* BOTÕES WOOCOMMERCE */
+.woocommerce .button,
+.woocommerce button.button,
+.woocommerce input.button {
+  background: var(--vt-blue-600);
+  color: white;
+  border: 1px solid var(--vt-blue-600);
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.woocommerce .button:hover,
+.woocommerce button.button:hover,
+.woocommerce input.button:hover {
+  background: var(--vt-blue-700);
+  border-color: var(--vt-blue-700);
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .vt-checkout-content,
+  .vt-account-content,
+  .vt-cart-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .vt-order-review,
+  .woocommerce-MyAccount-navigation,
+  .vt-cart-totals {
+    position: relative;
+    top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .vt-checkout-steps {
+    gap: 1rem;
+  }
+  
+  .vt-checkout-title,
+  .vt-account-title,
+  .vt-cart-title {
+    font-size: 2rem;
+  }
+}

@@ -136,3 +136,57 @@ function vt_enqueue_header_buttons() {
     );
 }
 add_action('wp_enqueue_scripts', 'vt_enqueue_header_buttons');
+
+// ===== WOOCOMMERCE INTEGRATION =====
+
+// Suporte ao WooCommerce
+add_theme_support('woocommerce');
+add_theme_support('wc-product-gallery-zoom');
+add_theme_support('wc-product-gallery-lightbox');
+add_theme_support('wc-product-gallery-slider');
+
+// Enqueue WooCommerce styles
+function vt_woocommerce_styles() {
+    if (class_exists('WooCommerce')) {
+        wp_enqueue_style('vt-woocommerce', VT_THEME_URI . '/assets/css/components/woocommerce.css', ['vt-style'], VT_THEME_VERSION);
+        wp_enqueue_style('vt-woocommerce-templates', VT_THEME_URI . '/assets/css/components/woocommerce-templates.css', ['vt-woocommerce'], VT_THEME_VERSION);
+    }
+}
+add_action('wp_enqueue_scripts', 'vt_woocommerce_styles');
+
+// Configurar produtos por página e colunas
+function vt_woocommerce_loop_columns() { return 3; }
+add_filter('loop_shop_columns', 'vt_woocommerce_loop_columns');
+
+function vt_woocommerce_products_per_page() { return 12; }
+add_filter('loop_shop_per_page', 'vt_woocommerce_products_per_page', 20);
+
+// Remover breadcrumbs padrão WooCommerce (usar do tema)
+remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
+
+// Configurar páginas WooCommerce automaticamente
+function vt_setup_woocommerce_pages() {
+    if (class_exists('WooCommerce')) {
+        $pages = array(
+            'woocommerce_shop_page_id' => 'Shop',
+            'woocommerce_cart_page_id' => 'Carrinho',
+            'woocommerce_checkout_page_id' => 'Checkout',
+            'woocommerce_myaccount_page_id' => 'Minha Conta'
+        );
+
+        foreach ($pages as $option => $title) {
+            $page_id = get_option($option);
+            if (!$page_id || !get_post($page_id)) {
+                $page_id = wp_insert_post(array(
+                    'post_title' => $title,
+                    'post_content' => '',
+                    'post_status' => 'publish',
+                    'post_type' => 'page',
+                    'post_name' => sanitize_title($title)
+                ));
+                update_option($option, $page_id);
+            }
+        }
+    }
+}
+add_action('init', 'vt_setup_woocommerce_pages');
