@@ -1,3 +1,50 @@
+#!/bin/bash
+
+# ===========================================
+# VancouverTec Store - Corrigir Responsivo Botões
+# Script: 08c-corrigir-responsivo.sh
+# Versão: 1.0.0 - Botões em TODOS os tamanhos
+# ===========================================
+
+set -euo pipefail
+
+# Cores
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+PURPLE='\033[0;35m'
+NC='\033[0m'
+
+# Variáveis
+THEME_PATH="wp-content/themes/vancouvertec-store"
+PROJECT_PATH="/home/$(whoami)/vancouvertec/store-vancouvertec-com-br/vancouvertec-store"
+
+log_info() { echo -e "${BLUE}[INFO]${NC} $1"; }
+log_success() { echo -e "${GREEN}[SUCCESS]${NC} $1"; }
+log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
+
+echo -e "${PURPLE}"
+cat << "EOF"
+╔══════════════════════════════════════════════╗
+║     📱 CORRIGIR RESPONSIVO BOTÕES 📱         ║
+║   Desktop + Tablet + Mobile (tamanhos OK)    ║
+╚══════════════════════════════════════════════╝
+EOF
+echo -e "${NC}"
+
+cd "$PROJECT_PATH"
+log_info "Corrigindo responsivo em: $(pwd)"
+
+# Parar servidor
+if pgrep -f "php -S localhost" > /dev/null; then
+    pkill -f "php -S localhost" || true
+    sleep 2
+fi
+
+# CORRIGIR CSS - Responsivo completo
+log_info "Corrigindo CSS responsivo..."
+cat > "$THEME_PATH/assets/css/layouts/header.css" << 'EOF'
 /* Header Layout VancouverTec Store - RESPONSIVO CORRIGIDO */
 
 /* Announcement Bar */
@@ -723,3 +770,43 @@
     max-width: 100%;
   }
 }
+EOF
+
+# Reiniciar servidor
+log_info "Reiniciando servidor..."
+cd "$PROJECT_PATH"
+php -S localhost:8080 -t . > /tmp/vt-server-8080.log 2>&1 &
+SERVER_PID=$!
+
+sleep 3
+
+if kill -0 $SERVER_PID 2>/dev/null; then
+    log_success "Servidor reiniciado (PID: $SERVER_PID)"
+else
+    log_error "Falha ao reiniciar servidor!"
+    exit 1
+fi
+
+echo -e "\n${GREEN}╔══════════════════════════════════════════════╗"
+echo -e "║     ✅ RESPONSIVO CORRIGIDO! ✅              ║"
+echo -e "║   Botões aparecem em TODOS os tamanhos       ║"
+echo -e "╚══════════════════════════════════════════════╝${NC}\n"
+
+log_success "✅ Desktop (1025px+): Botões completos com texto"
+log_success "✅ Tablet (769-1024px): Botões compactos (só ícones)"
+log_success "✅ Mobile (768px-): Botões no menu mobile (tamanho médio)"
+log_success "✅ Layout original preservado"
+
+echo -e "\n${YELLOW}📱 TESTE RESPONSIVO:${NC}"
+echo -e "• Desktop: http://localhost:8080 - Veja 3 botões com texto"
+echo -e "• Tablet: Redimensione para 800px - Botões só com ícones"
+echo -e "• Mobile: Redimensione para 375px - Botões no menu mobile"
+
+echo -e "\n${BLUE}📋 TAMANHOS CORRETOS:${NC}"
+echo -e "• Desktop: Botões normais com labels"
+echo -e "• Tablet: Botões compactos (sem texto)"
+echo -e "• Mobile: Botões médios no menu mobile"
+
+log_success "Responsivo 100% funcional em todos os dispositivos!"
+
+exit 0
