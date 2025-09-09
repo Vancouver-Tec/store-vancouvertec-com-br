@@ -1,3 +1,56 @@
+#!/bin/bash
+
+# ===========================================
+# VancouverTec Store - Fix Critical Error
+# Script: 20c-fix-critical-error.sh
+# Versão: 1.0.0 - Corrigir erro crítico front-page.php
+# ===========================================
+
+set -euo pipefail
+
+# Cores
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+PURPLE='\033[0;35m'
+NC='\033[0m'
+
+# Variáveis
+THEME_PATH="wp-content/themes/vancouvertec-store"
+PROJECT_PATH="/home/$(whoami)/vancouvertec/store-vancouvertec-com-br/vancouvertec-store"
+
+log_info() { echo -e "${BLUE}[INFO]${NC} $1"; }
+log_success() { echo -e "${GREEN}[SUCCESS]${NC} $1"; }
+log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
+
+echo -e "${PURPLE}"
+cat << "EOF"
+╔══════════════════════════════════════════════╗
+║       🔧 FIX CRITICAL ERROR 🔧              ║
+║         Corrigir front-page.php             ║
+╚══════════════════════════════════════════════╝
+EOF
+echo -e "${NC}"
+
+cd "$PROJECT_PATH"
+log_info "Corrigindo erro crítico..."
+
+# Parar servidor
+if pgrep -f "php -S localhost" > /dev/null; then
+    pkill -f "php -S localhost" || true
+    sleep 2
+fi
+
+# 1. BACKUP DO FRONT-PAGE ATUAL
+log_info "Fazendo backup do front-page.php..."
+if [[ -f "$THEME_PATH/front-page.php" ]]; then
+    cp "$THEME_PATH/front-page.php" "$THEME_PATH/front-page.php.backup"
+fi
+
+# 2. RECRIAR FRONT-PAGE.PHP LIMPO (SEM ERRO)
+log_info "Recriando front-page.php sem erros..."
+cat > "$THEME_PATH/front-page.php" << 'EOF'
 <?php
 /**
  * Front Page - VancouverTec Store
@@ -489,3 +542,33 @@ get_header(); ?>
 </section>
 
 <?php get_footer(); ?>
+EOF
+
+# Reiniciar servidor
+log_info "Reiniciando servidor..."
+cd "$PROJECT_PATH"
+php -S localhost:8080 -t . > /tmp/vt-server-8080.log 2>&1 &
+SERVER_PID=$!
+
+sleep 3
+
+if kill -0 $SERVER_PID 2>/dev/null; then
+    log_success "Servidor reiniciado (PID: $SERVER_PID)"
+else
+    log_error "Falha ao reiniciar servidor!"
+    exit 1
+fi
+
+echo -e "\n${GREEN}╔══════════════════════════════════════════════╗"
+echo -e "║      ✅ ERRO CRÍTICO CORRIGIDO! ✅           ║"
+echo -e "║        Front-page.php recriado               ║"
+echo -e "╚══════════════════════════════════════════════╝${NC}\n"
+
+log_success "✅ Front-page.php recriado sem erros"
+log_success "✅ Query WooCommerce simplificada e segura"
+log_success "✅ Backup salvo como front-page.php.backup"
+log_success "✅ Site deve funcionar normalmente agora"
+
+echo -e "\n${BLUE}🌐 Teste: http://localhost:8080${NC}"
+
+exit 0

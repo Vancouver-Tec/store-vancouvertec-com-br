@@ -4,12 +4,10 @@ if (!defined('ABSPATH')) exit;
 do_action('woocommerce_before_account_navigation');
 ?>
 
-<div class="vt-my-account-page">
+<div class="vt-account-page">
     <div class="container">
-        <div class="vt-account-header">
-            <h1 class="vt-account-title">Minha Conta</h1>
-            <p class="vt-account-welcome">Olá, <?php echo esc_html($current_user->display_name); ?>!</p>
-        </div>
+        <h1 class="vt-page-title">Minha Conta</h1>
+        <p class="vt-account-welcome">Olá, <?php echo esc_html($current_user->display_name); ?>!</p>
 
         <div class="vt-account-content">
             <nav class="woocommerce-MyAccount-navigation">

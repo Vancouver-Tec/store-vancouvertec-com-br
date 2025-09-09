@@ -40,25 +40,41 @@ function vt_enqueue_assets() {
     }
     
     wp_enqueue_style('vt-style', VT_THEME_URI . '/style.css', [], VT_THEME_VERSION);
+    wp_enqueue_style('vt-variables', VT_THEME_URI . '/assets/css/variables.css', [], VT_THEME_VERSION);
     wp_enqueue_style('vt-front-page', VT_THEME_URI . '/assets/css/pages/front-page.css', ['vt-style'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-variables', VT_THEME_URI . '/assets/css/variables.css', [], VT_THEME_VERSION);
     wp_enqueue_style('vt-woo-home', VT_THEME_URI . '/assets/css/components/woocommerce-home.css', ['vt-front-page'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-woo-home-fixed', VT_THEME_URI . '/assets/css/components/woocommerce-home-fixed.css', ['vt-woo-home'], VT_THEME_VERSION);
     wp_enqueue_style('vt-woo-pages', VT_THEME_URI . '/assets/css/components/woocommerce-pages.css', ['vt-woo-home'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-woo-home-fixed', VT_THEME_URI . '/assets/css/components/woocommerce-home-fixed.css', ['vt-woo-home'], VT_THEME_VERSION);
     wp_enqueue_style('vt-header', VT_THEME_URI . '/assets/css/layouts/header.css', ['vt-style'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-variables', VT_THEME_URI . '/assets/css/variables.css', [], VT_THEME_VERSION);
     wp_enqueue_style('vt-front-page', VT_THEME_URI . '/assets/css/pages/front-page.css', ['vt-style'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-variables', VT_THEME_URI . '/assets/css/variables.css', [], VT_THEME_VERSION);
     wp_enqueue_style('vt-woo-home', VT_THEME_URI . '/assets/css/components/woocommerce-home.css', ['vt-front-page'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-woo-home-fixed', VT_THEME_URI . '/assets/css/components/woocommerce-home-fixed.css', ['vt-woo-home'], VT_THEME_VERSION);
     wp_enqueue_style('vt-woo-pages', VT_THEME_URI . '/assets/css/components/woocommerce-pages.css', ['vt-woo-home'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-woo-home-fixed', VT_THEME_URI . '/assets/css/components/woocommerce-home-fixed.css', ['vt-woo-home'], VT_THEME_VERSION);
     wp_enqueue_style('vt-header-botoes', VT_THEME_URI . '/assets/css/layouts/header-botoes-forcados.css', ['vt-header'], VT_THEME_VERSION);
     wp_enqueue_style('vt-footer', VT_THEME_URI . '/assets/css/layouts/footer.css', ['vt-header'], VT_THEME_VERSION);
     wp_enqueue_style('vt-header-botoes', VT_THEME_URI . '/assets/css/layouts/header-botoes-forcados.css', ['vt-header'], VT_THEME_VERSION);
     wp_enqueue_style('vt-responsive', VT_THEME_URI . '/assets/css/responsive.css', ['vt-footer'], VT_THEME_VERSION);
     wp_enqueue_style('vt-buttons', VT_THEME_URI . '/assets/css/components/buttons.css', ['vt-style'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-variables', VT_THEME_URI . '/assets/css/variables.css', [], VT_THEME_VERSION);
     wp_enqueue_style('vt-front-page', VT_THEME_URI . '/assets/css/pages/front-page.css', ['vt-style'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-variables', VT_THEME_URI . '/assets/css/variables.css', [], VT_THEME_VERSION);
     wp_enqueue_style('vt-woo-home', VT_THEME_URI . '/assets/css/components/woocommerce-home.css', ['vt-front-page'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-woo-home-fixed', VT_THEME_URI . '/assets/css/components/woocommerce-home-fixed.css', ['vt-woo-home'], VT_THEME_VERSION);
     wp_enqueue_style('vt-woo-pages', VT_THEME_URI . '/assets/css/components/woocommerce-pages.css', ['vt-woo-home'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-woo-home-fixed', VT_THEME_URI . '/assets/css/components/woocommerce-home-fixed.css', ['vt-woo-home'], VT_THEME_VERSION);
     wp_enqueue_style('vt-header', VT_THEME_URI . '/assets/css/layouts/header.css', ['vt-style'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-variables', VT_THEME_URI . '/assets/css/variables.css', [], VT_THEME_VERSION);
     wp_enqueue_style('vt-front-page', VT_THEME_URI . '/assets/css/pages/front-page.css', ['vt-style'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-variables', VT_THEME_URI . '/assets/css/variables.css', [], VT_THEME_VERSION);
     wp_enqueue_style('vt-woo-home', VT_THEME_URI . '/assets/css/components/woocommerce-home.css', ['vt-front-page'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-woo-home-fixed', VT_THEME_URI . '/assets/css/components/woocommerce-home-fixed.css', ['vt-woo-home'], VT_THEME_VERSION);
     wp_enqueue_style('vt-woo-pages', VT_THEME_URI . '/assets/css/components/woocommerce-pages.css', ['vt-woo-home'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-woo-home-fixed', VT_THEME_URI . '/assets/css/components/woocommerce-home-fixed.css', ['vt-woo-home'], VT_THEME_VERSION);
     wp_enqueue_style('vt-header-botoes', VT_THEME_URI . '/assets/css/layouts/header-botoes-forcados.css', ['vt-header'], VT_THEME_VERSION);
     wp_enqueue_style('vt-footer', VT_THEME_URI . '/assets/css/layouts/footer.css', ['vt-header'], VT_THEME_VERSION);
     wp_enqueue_style('vt-header-botoes', VT_THEME_URI . '/assets/css/layouts/header-botoes-forcados.css', ['vt-header'], VT_THEME_VERSION);
@@ -149,7 +165,10 @@ add_theme_support('wc-product-gallery-slider');
 function vt_woocommerce_styles() {
     if (class_exists('WooCommerce')) {
         wp_enqueue_style('vt-woocommerce', VT_THEME_URI . '/assets/css/components/woocommerce.css', ['vt-style'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-variables', VT_THEME_URI . '/assets/css/variables.css', [], VT_THEME_VERSION);
         wp_enqueue_style('vt-woocommerce-templates', VT_THEME_URI . '/assets/css/components/woocommerce-templates.css', ['vt-woocommerce'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-woocommerce-templates-vt', VT_THEME_URI . '/assets/css/components/woocommerce-templates-vt.css', ['vt-woocommerce-templates'], VT_THEME_VERSION);
+    wp_enqueue_style('vt-woocommerce-shop-templates', VT_THEME_URI . '/assets/css/components/woocommerce-shop-templates.css', ['vt-woocommerce-templates-vt'], VT_THEME_VERSION);
     }
 }
 add_action('wp_enqueue_scripts', 'vt_woocommerce_styles');
@@ -190,3 +209,128 @@ function vt_setup_woocommerce_pages() {
     }
 }
 add_action('init', 'vt_setup_woocommerce_pages');
+
+// ===== FORÇAR TEMPLATES WOOCOMMERCE =====
+
+// Forçar template para página Cart
+function vt_force_cart_template($template) {
+    if (is_cart()) {
+        $cart_template = locate_template('woocommerce/cart/cart.php');
+        if ($cart_template) {
+            return $cart_template;
+        }
+    }
+    return $template;
+}
+add_filter('template_include', 'vt_force_cart_template', 99);
+
+// Forçar template para página Checkout
+function vt_force_checkout_template($template) {
+    if (is_checkout()) {
+        $checkout_template = locate_template('woocommerce/checkout/form-checkout.php');
+        if ($checkout_template) {
+            return $checkout_template;
+        }
+    }
+    return $template;
+}
+add_filter('template_include', 'vt_force_checkout_template', 99);
+
+// Forçar template para My Account
+function vt_force_account_template($template) {
+    if (is_account_page()) {
+        $account_template = locate_template('woocommerce/myaccount/my-account.php');
+        if ($account_template) {
+            return $account_template;
+        }
+    }
+    return $template;
+}
+add_filter('template_include', 'vt_force_account_template', 99);
+
+// Desabilitar Elementor para páginas WooCommerce
+function vt_disable_elementor_woocommerce($post_id) {
+    if (is_cart() || is_checkout() || is_account_page() || is_shop()) {
+        return false;
+    }
+    return $post_id;
+}
+add_filter('elementor/frontend/builder_content_display', 'vt_disable_elementor_woocommerce');
+
+// Remover conteúdo de página para WooCommerce
+function vt_remove_woocommerce_page_content() {
+    if (is_cart() || is_checkout() || is_account_page()) {
+        remove_filter('the_content', 'wpautop');
+        add_filter('the_content', function($content) {
+            if (is_cart() || is_checkout() || is_account_page()) {
+                return '';
+            }
+            return $content;
+        }, 999);
+    }
+}
+add_action('wp', 'vt_remove_woocommerce_page_content');
+
+// Debug: Verificar qual template está sendo usado
+function vt_debug_template() {
+    if (current_user_can('manage_options') && isset($_GET['debug_template'])) {
+        global $template;
+        echo '<div style="background: red; color: white; padding: 10px; position: fixed; top: 0; left: 0; z-index: 9999;">Template: ' . $template . '</div>';
+    }
+}
+add_action('wp_footer', 'vt_debug_template');
+
+// ===== SHORTCODES CUSTOMIZADOS =====
+
+// Shortcode Cart customizado
+function vt_custom_cart_shortcode() {
+    if (!function_exists('WC')) {
+        return '<p>WooCommerce não está ativo.</p>';
+    }
+    
+    ob_start();
+    
+    if (WC()->cart->is_empty()) {
+        echo '<div class="vt-empty-cart">';
+        echo '<h3>Seu carrinho está vazio</h3>';
+        echo '<p>Adicione alguns produtos incríveis ao seu carrinho!</p>';
+        echo '<a href="' . get_permalink(wc_get_page_id('shop')) . '" class="button">Ir às Compras</a>';
+        echo '</div>';
+    } else {
+        // Incluir template do cart
+        $template = locate_template('woocommerce/cart/cart.php');
+        if ($template) {
+            include $template;
+        } else {
+            wc_get_template('cart/cart.php');
+        }
+    }
+    
+    return ob_get_clean();
+}
+add_shortcode('vt_cart', 'vt_custom_cart_shortcode');
+
+// Shortcode Checkout customizado
+function vt_custom_checkout_shortcode() {
+    if (!function_exists('WC')) {
+        return '<p>WooCommerce não está ativo.</p>';
+    }
+    
+    ob_start();
+    
+    // Incluir template do checkout
+    $template = locate_template('woocommerce/checkout/form-checkout.php');
+    if ($template) {
+        global $woocommerce;
+        $checkout = WC()->checkout();
+        if (!$checkout) {
+            return '<p>Erro no checkout.</p>';
+        }
+        include $template;
+    } else {
+        echo do_shortcode('[woocommerce_checkout]');
+    }
+    
+    return ob_get_clean();
+}
+add_shortcode('vt_checkout', 'vt_custom_checkout_shortcode');

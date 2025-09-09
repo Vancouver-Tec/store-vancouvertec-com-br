@@ -1,0 +1,371 @@
+/* VancouverTec - Templates WooCommerce Específicos */
+
+/* SINGLE PRODUCT */
+.vt-single-product {
+  padding: 2rem 0 4rem;
+}
+
+.vt-breadcrumb {
+  margin-bottom: 2rem;
+  font-size: 0.875rem;
+}
+
+.vt-breadcrumb .woocommerce-breadcrumb a {
+  color: var(--vt-blue-600);
+  text-decoration: none;
+}
+
+.vt-product-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+
+.vt-product-gallery {
+  position: sticky;
+  top: 2rem;
+  height: fit-content;
+}
+
+.vt-product-info {
+  padding: 1rem 0;
+}
+
+.vt-product-badges {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.vt-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.vt-badge.sale {
+  background: linear-gradient(135deg, #EF4444, #DC2626);
+  color: white;
+}
+
+.vt-badge.featured {
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+  color: white;
+}
+
+.vt-badge.digital {
+  background: linear-gradient(135deg, var(--vt-blue-600), var(--vt-indigo-500));
+  color: white;
+}
+
+.vt-product-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1F2937;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.vt-product-price .price {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--vt-blue-600);
+}
+
+.vt-product-description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #6B7280;
+  margin-bottom: 2rem;
+}
+
+.vt-product-form {
+  margin-bottom: 3rem;
+}
+
+.vt-product-form .cart {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.vt-product-form .single_add_to_cart_button {
+  flex: 1;
+  padding: 1.25rem 2rem;
+  background: linear-gradient(135deg, var(--vt-blue-600), var(--vt-indigo-500));
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.vt-product-form .single_add_to_cart_button:hover {
+  background: linear-gradient(135deg, var(--vt-blue-700), #4F46E5);
+  transform: translateY(-2px);
+}
+
+/* GARANTIAS VANCOUVERTEC */
+.vt-guarantees {
+  background: linear-gradient(135deg, #F0F9FF, #E0F2FE);
+  padding: 2rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+}
+
+.vt-guarantees h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1F2937;
+  margin-bottom: 1.5rem;
+}
+
+.vt-guarantees-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.guarantee-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.guarantee-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.guarantee-item strong {
+  display: block;
+  color: #1F2937;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.guarantee-item small {
+  color: #6B7280;
+  font-size: 0.875rem;
+}
+
+/* PRODUCT LOOP CARDS */
+.vt-product-loop-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.vt-product-loop-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+.vt-sale-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #EF4444;
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  z-index: 10;
+}
+
+.vt-featured-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: #F59E0B;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 50%;
+  z-index: 9;
+}
+
+.vt-product-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.vt-product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.vt-product-loop-card:hover .vt-product-image img {
+  transform: scale(1.1);
+}
+
+.vt-product-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.vt-product-loop-card:hover .vt-product-overlay {
+  transform: translateY(0);
+}
+
+.vt-product-overlay .button,
+.vt-quick-view {
+  flex: 1;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.vt-product-overlay .button {
+  background: var(--vt-blue-600);
+  color: white;
+  border: none;
+}
+
+.vt-quick-view {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.vt-product-content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.vt-product-category a {
+  color: var(--vt-blue-600);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.vt-product-title {
+  margin: 0.5rem 0 1rem;
+  flex-shrink: 0;
+}
+
+.vt-product-title a {
+  color: #1F2937;
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.vt-product-title a:hover {
+  color: var(--vt-blue-600);
+}
+
+.vt-product-excerpt {
+  color: #6B7280;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.vt-product-price {
+  margin-bottom: 1rem;
+}
+
+.vt-product-price .price {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--vt-blue-600);
+}
+
+.vt-product-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.vt-meta-tag {
+  background: #F3F4F6;
+  color: #6B7280;
+  padding: 0.25rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.vt-meta-tag.digital {
+  background: #DBEAFE;
+  color: var(--vt-blue-700);
+}
+
+.vt-meta-tag.download {
+  background: #D1FAE5;
+  color: #047857;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .vt-product-main {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .vt-product-gallery {
+    position: relative;
+    top: 0;
+  }
+  
+  .vt-guarantees-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .vt-product-title {
+    font-size: 2rem;
+  }
+  
+  .vt-product-form .cart {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .vt-product-overlay {
+    position: static;
+    background: none;
+    padding: 1rem 0 0;
+    transform: none;
+    flex-direction: column;
+  }
+  
+  .vt-product-overlay .button,
+  .vt-quick-view {
+    background: var(--vt-blue-600);
+    color: white;
+  }
+}

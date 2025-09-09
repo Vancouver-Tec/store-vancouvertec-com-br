@@ -1,0 +1,359 @@
+/* VancouverTec - Shop + Templates CSS */
+
+/* SHOP PAGE */
+.vt-shop-page {
+  padding: 2rem 0 4rem;
+}
+
+.vt-shop-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.vt-shop-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1F2937;
+}
+
+.vt-shop-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.vt-shop-content {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
+}
+
+.vt-shop-sidebar {
+  background: #F9FAFB;
+  padding: 2rem;
+  border-radius: 15px;
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+}
+
+.vt-widget {
+  margin-bottom: 2rem;
+}
+
+.vt-widget h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1F2937;
+  margin-bottom: 1rem;
+}
+
+.vt-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* CART PAGE */
+.vt-cart-page {
+  padding: 2rem 0 4rem;
+}
+
+.vt-page-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1F2937;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.vt-cart-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+}
+
+.vt-cart-items {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.vt-cart-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.vt-cart-table th {
+  padding: 1rem;
+  background: #F9FAFB;
+  font-weight: 700;
+  color: #374151;
+  border-bottom: 2px solid #E5E7EB;
+}
+
+.vt-cart-table td {
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid #E5E7EB;
+  vertical-align: middle;
+}
+
+.product-info {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.product-info img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.vt-cart-totals {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+}
+
+/* CHECKOUT PAGE */
+.vt-checkout-page {
+  padding: 2rem 0 4rem;
+}
+
+.vt-checkout-steps {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.vt-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.vt-step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #E5E7EB;
+  color: #6B7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.vt-step.active .vt-step-number {
+  background: var(--vt-blue-600);
+  color: white;
+}
+
+.vt-step-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6B7280;
+}
+
+.vt-step.active .vt-step-label {
+  color: var(--vt-blue-600);
+}
+
+.vt-checkout-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.vt-checkout-form {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.vt-order-review {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+}
+
+/* MY ACCOUNT */
+.vt-account-page {
+  padding: 2rem 0 4rem;
+}
+
+.vt-account-welcome {
+  font-size: 1.125rem;
+  color: #6B7280;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.vt-account-content {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
+}
+
+.woocommerce-MyAccount-navigation {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+}
+
+.woocommerce-MyAccount-navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.woocommerce-MyAccount-navigation li {
+  margin-bottom: 0.5rem;
+}
+
+.vt-account-nav-link {
+  display: block;
+  padding: 1rem;
+  color: #6B7280;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.vt-account-nav-link:hover,
+.is-active .vt-account-nav-link {
+  background: #F0F9FF;
+  color: var(--vt-blue-600);
+}
+
+.woocommerce-MyAccount-content {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* BOTÕES WOOCOMMERCE */
+.woocommerce .button,
+.woocommerce button.button,
+.woocommerce input.button {
+  background: var(--vt-blue-600) !important;
+  color: white !important;
+  border: 1px solid var(--vt-blue-600) !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+.woocommerce .button:hover,
+.woocommerce button.button:hover,
+.woocommerce input.button:hover {
+  background: var(--vt-blue-700) !important;
+  border-color: var(--vt-blue-700) !important;
+  color: white !important;
+  transform: translateY(-1px) !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .vt-shop-content,
+  .vt-cart-content,
+  .vt-checkout-content,
+  .vt-account-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .vt-shop-sidebar,
+  .vt-cart-totals,
+  .vt-order-review,
+  .woocommerce-MyAccount-navigation {
+    position: relative;
+    top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .vt-shop-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .vt-checkout-steps {
+    gap: 1rem;
+  }
+}
+
+/* FORÇA ESTILOS WOOCOMMERCE */
+.vt-cart-page .woocommerce,
+.vt-checkout-page .woocommerce,
+.vt-account-page .woocommerce {
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.vt-empty-cart {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.vt-empty-cart h3 {
+  font-size: 2rem;
+  color: #1F2937;
+  margin-bottom: 1rem;
+}
+
+.vt-empty-cart p {
+  color: #6B7280;
+  margin-bottom: 2rem;
+  font-size: 1.125rem;
+}
+
+.vt-empty-cart .button {
+  background: var(--vt-blue-600) !important;
+  color: white !important;
+  padding: 1rem 2rem !important;
+  border-radius: 10px !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+}
+
+/* DEBUG TEMPLATE */
+.template-debug {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: red;
+  color: white;
+  padding: 10px;
+  z-index: 9999;
+  font-size: 12px;
+}

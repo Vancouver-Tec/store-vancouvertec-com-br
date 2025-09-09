@@ -1,0 +1,10 @@
+/* VancouverTec Store - CSS Variables */
+:root {
+  --vt-blue-600: #0066CC;
+  --vt-blue-700: #0052A3;
+  --vt-indigo-500: #6366F1;
+  --vt-success-500: #10B981;
+  --vt-error-500: #EF4444;
+  --vt-neutral-100: #F3F4F6;
+  --vt-neutral-800: #1F2937;
+}

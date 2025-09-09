@@ -1,25 +1,20 @@
 <?php
-/**
- * The template for displaying product content within loops
- */
-
 defined('ABSPATH') || exit;
 
 global $product;
-
 if (empty($product) || !$product->is_visible()) {
     return;
 }
 ?>
 
-<div <?php wc_product_class('product-card-loop', $product); ?>>
+<div <?php wc_product_class('vt-product-loop-card', $product); ?>>
     <?php if ($product->is_on_sale()) : ?>
-        <div class="sale-badge-loop">
+        <div class="vt-sale-badge">
             <?php
-            $regular_price = $product->get_regular_price();
-            $sale_price = $product->get_sale_price();
-            if ($regular_price && $sale_price) {
-                $discount = round((($regular_price - $sale_price) / $regular_price) * 100);
+            $regular = $product->get_regular_price();
+            $sale = $product->get_sale_price();
+            if ($regular && $sale) {
+                $discount = round((($regular - $sale) / $regular) * 100);
                 echo $discount . '% OFF';
             } else {
                 echo 'OFERTA';
@@ -28,63 +23,53 @@ if (empty($product) || !$product->is_visible()) {
         </div>
     <?php endif; ?>
     
-    <div class="product-image-wrapper">
-        <a href="<?php the_permalink(); ?>" class="product-image-link">
+    <div class="vt-product-image">
+        <a href="<?php the_permalink(); ?>">
             <?php echo woocommerce_get_product_thumbnail('medium'); ?>
         </a>
         
-        <div class="product-actions-hover">
+        <div class="vt-product-overlay">
             <?php woocommerce_template_loop_add_to_cart(); ?>
-            <button class="quick-view-btn" data-product-id="<?php echo esc_attr($product->get_id()); ?>">
-                👁️ Visualização Rápida
-            </button>
+            <a href="<?php the_permalink(); ?>" class="vt-quick-view">Ver Detalhes</a>
         </div>
         
         <?php if ($product->is_featured()) : ?>
-            <div class="featured-badge">⭐ Destaque</div>
+            <div class="vt-featured-badge">⭐</div>
         <?php endif; ?>
     </div>
     
-    <div class="product-info-wrapper">
+    <div class="vt-product-content">
         <?php
-        // Categoria
         $terms = get_the_terms($product->get_id(), 'product_cat');
         if ($terms && !is_wp_error($terms)) :
         ?>
-            <div class="product-category">
+            <div class="vt-product-category">
                 <a href="<?php echo get_term_link($terms[0]); ?>">
                     <?php echo esc_html($terms[0]->name); ?>
                 </a>
             </div>
         <?php endif; ?>
         
-        <h3 class="product-title-loop">
-            <a href="<?php the_permalink(); ?>">
-                <?php the_title(); ?>
-            </a>
+        <h3 class="vt-product-title">
+            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
         </h3>
         
-        <div class="product-excerpt-loop">
+        <div class="vt-product-excerpt">
             <?php echo wp_trim_words(get_the_excerpt(), 15, '...'); ?>
         </div>
         
         <?php woocommerce_template_loop_rating(); ?>
         
-        <div class="product-price-wrapper">
+        <div class="vt-product-price">
             <?php woocommerce_template_loop_price(); ?>
         </div>
         
-        <div class="product-meta-info">
-            <?php if ($product->is_type('variable')) : ?>
-                <span class="variable-info">📋 Várias opções</span>
-            <?php endif; ?>
-            
-            <?php if ($product->is_downloadable()) : ?>
-                <span class="download-info">⬇️ Download</span>
-            <?php endif; ?>
-            
+        <div class="vt-product-meta">
             <?php if ($product->is_virtual()) : ?>
-                <span class="virtual-info">💻 Digital</span>
+                <span class="vt-meta-tag digital">💻 Digital</span>
+            <?php endif; ?>
+            <?php if ($product->is_downloadable()) : ?>
+                <span class="vt-meta-tag download">⬇️ Download</span>
             <?php endif; ?>
         </div>
     </div>
