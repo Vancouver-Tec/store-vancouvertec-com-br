@@ -213,42 +213,6 @@ add_action('init', 'vt_setup_woocommerce_pages');
 // ===== FORÇAR TEMPLATES WOOCOMMERCE =====
 
 // Forçar template para página Cart
-function vt_force_cart_template($template) {
-    if (is_cart()) {
-        $cart_template = locate_template('woocommerce/cart/cart.php');
-        if ($cart_template) {
-            return $cart_template;
-        }
-    }
-    return $template;
-}
-add_filter('template_include', 'vt_force_cart_template', 99);
-
-// Forçar template para página Checkout
-function vt_force_checkout_template($template) {
-    if (is_checkout()) {
-        $checkout_template = locate_template('woocommerce/checkout/form-checkout.php');
-        if ($checkout_template) {
-            return $checkout_template;
-        }
-    }
-    return $template;
-}
-add_filter('template_include', 'vt_force_checkout_template', 99);
-
-// Forçar template para My Account
-function vt_force_account_template($template) {
-    if (is_account_page()) {
-        $account_template = locate_template('woocommerce/myaccount/my-account.php');
-        if ($account_template) {
-            return $account_template;
-        }
-    }
-    return $template;
-}
-add_filter('template_include', 'vt_force_account_template', 99);
-
-// Desabilitar Elementor para páginas WooCommerce
 function vt_disable_elementor_woocommerce($post_id) {
     if (is_cart() || is_checkout() || is_account_page() || is_shop()) {
         return false;
@@ -334,3 +298,201 @@ function vt_custom_checkout_shortcode() {
     return ob_get_clean();
 }
 add_shortcode('vt_checkout', 'vt_custom_checkout_shortcode');
+
+
+// ===== WOOCOMMERCE VANCOUVERTEC COMPLETE - PARTE 1 =====
+
+/**
+ * Carregar CSS completo para páginas WooCommerce
+ */
+function vt_woocommerce_complete_styles() {
+    if (is_woocommerce() || is_cart() || is_checkout() || is_account_page()) {
+        wp_enqueue_style(
+            'vt-woocommerce-complete', 
+            VT_THEME_URI . '/assets/css/components/woocommerce-vancouvertec-complete.css', 
+            [], 
+            VT_THEME_VERSION . '-' . time(),
+            'all'
+        );
+        
+        // CSS inline crítico
+        wp_add_inline_style('vt-woocommerce-complete', '
+            body.woocommerce,
+            body.woocommerce-page {
+                background: #F3F4F6 !important;
+                min-height: 100vh !important;
+            }
+            .site-content {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+        ');
+    }
+}
+add_action('wp_enqueue_scripts', 'vt_woocommerce_complete_styles', 999);
+
+/**
+ * Adicionar classes específicas ao body
+ */
+function vt_woocommerce_body_classes($classes) {
+    if (is_woocommerce() || is_cart() || is_checkout() || is_account_page()) {
+        $classes[] = 'vt-woocommerce-complete';
+        $classes[] = 'vt-layout-vancouvertec';
+        
+        if (is_cart()) {
+            $classes[] = 'vt-cart-page';
+        }
+        if (is_checkout()) {
+            $classes[] = 'vt-checkout-page';
+        }
+        if (is_account_page()) {
+            $classes[] = 'vt-account-page';
+        }
+    }
+    return $classes;
+}
+add_filter('body_class', 'vt_woocommerce_body_classes');
+
+/**
+ * Customizar mensagens WooCommerce
+ */
+function vt_woocommerce_custom_messages() {
+    // Mensagem carrinho vazio
+    add_filter('wc_empty_cart_message', function($message) {
+        return '<div class="vt-empty-cart-message">🛒 <strong>Seu carrinho está vazio!</strong><br>Que tal adicionar alguns produtos incríveis?</div>';
+    });
+    
+    // Mensagem produto adicionado
+    add_filter('wc_add_to_cart_message_html', function($message, $products) {
+        return '<div class="vt-cart-success">✅ <strong>Produto adicionado com sucesso!</strong> ' . $message . '</div>';
+    }, 10, 2);
+}
+add_action('init', 'vt_woocommerce_custom_messages');
+
+/**
+ * Customizar títulos das páginas
+ */
+function vt_woocommerce_custom_page_titles($title) {
+    if (is_cart()) {
+        return '🛒 Carrinho de Compras - VancouverTec';
+    }
+    if (is_checkout()) {
+        return '💳 Finalizar Compra - VancouverTec';
+    }
+    if (is_account_page()) {
+        return '👤 Minha Conta - VancouverTec';
+    }
+    return $title;
+}
+add_filter('woocommerce_page_title', 'vt_woocommerce_custom_page_titles');
+
+/**
+ * Adicionar JavaScript para melhorias UX
+ */
+function vt_woocommerce_scripts() {
+    if (is_woocommerce() || is_cart() || is_checkout() || is_account_page()) {
+        wp_add_inline_script('jquery', '
+            jQuery(document).ready(function($) {
+                // Smooth focus nos campos
+                $(".form-row input, .form-row select, .form-row textarea").on("focus", function() {
+                    $(this).closest(".form-row").addClass("focused");
+                }).on("blur", function() {
+                    $(this).closest(".form-row").removeClass("focused");
+                });
+                
+                // Loading nos botões
+                $(".button").on("click", function() {
+                    if (!$(this).hasClass("no-loading")) {
+                        $(this).addClass("loading").append(" <span class=\'spinner\'>⏳</span>");
+                    }
+                });
+            });
+        ');
+    }
+}
+add_action('wp_enqueue_scripts', 'vt_woocommerce_scripts');
+
+/**
+ * Adicionar botão Wishlist aos produtos
+ */
+function vt_add_wishlist_button() {
+    global $product;
+    if (!$product) return;
+    
+    $product_id = $product->get_id();
+    $product_name = $product->get_name();
+    $product_image = get_the_post_thumbnail_url($product_id, 'medium');
+    $product_price = $product->get_price_html();
+    $product_url = get_permalink($product_id);
+    
+    echo '<button class="vt-wishlist-btn" onclick="toggleWishlist(' . $product_id . ', \'' . esc_js($product_name) . '\', \'' . esc_url($product_image) . '\', \'' . esc_js($product_price) . '\', \'' . esc_url($product_url) . '\')">';
+    echo '<span class="heart-icon">🤍</span>';
+    echo '<span class="wishlist-text">Favoritar</span>';
+    echo '</button>';
+}
+add_action('woocommerce_single_product_summary', 'vt_add_wishlist_button', 35);
+
+/**
+ * Adicionar JavaScript Wishlist
+ */
+function vt_wishlist_scripts() {
+    if (is_woocommerce() || is_shop() || is_product() || is_page_template('page-wishlist.php')) {
+        wp_add_inline_script('jquery', '
+            window.toggleWishlist = function(id, name, image, price, url) {
+                let wishlist = JSON.parse(localStorage.getItem("vt_wishlist") || "[]");
+                const existingIndex = wishlist.findIndex(item => item.id === id);
+                const btn = event.target.closest(".vt-wishlist-btn");
+                const heartIcon = btn.querySelector(".heart-icon");
+                const textEl = btn.querySelector(".wishlist-text");
+                
+                if (existingIndex > -1) {
+                    // Remover dos favoritos
+                    wishlist.splice(existingIndex, 1);
+                    btn.classList.remove("active");
+                    heartIcon.textContent = "🤍";
+                    textEl.textContent = "Favoritar";
+                } else {
+                    // Adicionar aos favoritos
+                    wishlist.push({id, name, image, price, url});
+                    btn.classList.add("active");
+                    heartIcon.textContent = "❤️";
+                    textEl.textContent = "Favoritado";
+                }
+                
+                localStorage.setItem("vt_wishlist", JSON.stringify(wishlist));
+                updateWishlistCount();
+            }
+            
+            function updateWishlistCount() {
+                const wishlist = JSON.parse(localStorage.getItem("vt_wishlist") || "[]");
+                jQuery(".wishlist-count").text(wishlist.length).toggle(wishlist.length > 0);
+            }
+            
+            jQuery(document).ready(function($) {
+                // Inicializar estado dos botões
+                const wishlist = JSON.parse(localStorage.getItem("vt_wishlist") || "[]");
+                
+                $(".vt-wishlist-btn").each(function() {
+                    const btn = $(this);
+                    const onclick = btn.attr("onclick");
+                    if (onclick) {
+                        const match = onclick.match(/toggleWishlist\((\d+)/);
+                        if (match) {
+                            const productId = parseInt(match[1]);
+                            const isInWishlist = wishlist.some(item => item.id === productId);
+                            
+                            if (isInWishlist) {
+                                btn.addClass("active");
+                                btn.find(".heart-icon").text("❤️");
+                                btn.find(".wishlist-text").text("Favoritado");
+                            }
+                        }
+                    }
+                });
+                
+                updateWishlistCount();
+            });
+        ');
+    }
+}
+add_action('wp_enqueue_scripts', 'vt_wishlist_scripts');

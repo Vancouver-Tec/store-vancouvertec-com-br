@@ -1,0 +1,805 @@
+/* VancouverTec Store - WooCommerce Layout COMPLETO */
+
+/* ===== VARIÁVEIS FORÇADAS ===== */
+:root {
+  --vt-blue-600: #0066CC !important;
+  --vt-blue-700: #0052A3 !important;
+  --vt-indigo-500: #6366F1 !important;
+  --vt-success-500: #10B981 !important;
+  --vt-error-500: #EF4444 !important;
+  --vt-neutral-50: #F9FAFB !important;
+  --vt-neutral-100: #F3F4F6 !important;
+  --vt-neutral-800: #1F2937 !important;
+  --vt-neutral-900: #111827 !important;
+}
+
+/* ===== BODY E ESTRUTURA GERAL ===== */
+body.woocommerce,
+body.woocommerce-page,
+body.woocommerce-cart,
+body.woocommerce-checkout,
+body.woocommerce-account {
+  background: var(--vt-neutral-100) !important;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif !important;
+  line-height: 1.6 !important;
+  color: var(--vt-neutral-800) !important;
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+body.woocommerce .site-main,
+body.woocommerce-page .site-main,
+body.woocommerce .entry-content,
+body.woocommerce-page .entry-content {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 2rem 1rem !important;
+  background: transparent !important;
+}
+
+/* ===== TÍTULOS DAS PÁGINAS ===== */
+body.woocommerce .entry-header,
+body.woocommerce-page .entry-header {
+  background: linear-gradient(135deg, white 0%, var(--vt-neutral-50) 100%) !important;
+  padding: 3rem 2rem !important;
+  text-align: center !important;
+  margin: 0 0 3rem 0 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+  border: 2px solid rgba(0, 102, 204, 0.1) !important;
+}
+
+body.woocommerce .entry-title,
+body.woocommerce-page .entry-title,
+body.woocommerce h1.page-title,
+body.woocommerce-page h1.page-title {
+  font-size: 2.5rem !important;
+  font-weight: 800 !important;
+  color: var(--vt-neutral-800) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+  text-transform: none !important;
+  letter-spacing: -0.025em !important;
+}
+
+/* ===== WRAPPER GERAL WOOCOMMERCE ===== */
+body.woocommerce .woocommerce,
+body.woocommerce-page .woocommerce {
+  background: white !important;
+  border-radius: 20px !important;
+  padding: 3rem !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+  border: 2px solid rgba(0, 102, 204, 0.1) !important;
+  margin-bottom: 2rem !important;
+}
+
+/* ===== SHOP PAGE ===== */
+body.woocommerce.archive .woocommerce-ordering,
+body.woocommerce.archive .woocommerce-result-count {
+  background: var(--vt-neutral-50) !important;
+  padding: 1rem 1.5rem !important;
+  border-radius: 12px !important;
+  border: 2px solid #E5E7EB !important;
+  margin-bottom: 1rem !important;
+  font-weight: 600 !important;
+  color: var(--vt-neutral-800) !important;
+}
+
+body.woocommerce.archive .woocommerce-ordering select {
+  background: white !important;
+  border: 2px solid #E5E7EB !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1rem !important;
+  font-weight: 600 !important;
+  color: var(--vt-neutral-800) !important;
+}
+
+/* ===== CART PAGE ESPECÍFICO ===== */
+body.woocommerce-cart .woocommerce .cart-empty {
+  text-align: center !important;
+  padding: 4rem 2rem !important;
+  background: linear-gradient(135deg, var(--vt-neutral-50), white) !important;
+  border-radius: 20px !important;
+  border: 2px solid rgba(0, 102, 204, 0.1) !important;
+}
+
+body.woocommerce-cart .woocommerce .cart-empty::before {
+  content: "🛒" !important;
+  font-size: 4rem !important;
+  display: block !important;
+  margin-bottom: 1rem !important;
+  opacity: 0.7 !important;
+}
+
+body.woocommerce-cart .woocommerce .return-to-shop {
+  margin-top: 2rem !important;
+}
+
+/* ===== TABELAS WOOCOMMERCE ===== */
+body.woocommerce table.cart,
+body.woocommerce table.shop_table,
+body.woocommerce-page table.shop_table {
+  background: white !important;
+  border-radius: 15px !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  border: 2px solid rgba(0, 102, 204, 0.1) !important;
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+
+body.woocommerce table.cart thead th,
+body.woocommerce table.shop_table thead th,
+body.woocommerce-page table.shop_table thead th {
+  background: linear-gradient(135deg, var(--vt-blue-600), var(--vt-indigo-500)) !important;
+  color: white !important;
+  font-weight: 800 !important;
+  padding: 1.5rem 1rem !important;
+  border: none !important;
+  font-size: 0.9rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+body.woocommerce table.cart tbody td,
+body.woocommerce table.shop_table tbody td,
+body.woocommerce-page table.shop_table tbody td {
+  padding: 1.5rem 1rem !important;
+  border-bottom: 1px solid #E5E7EB !important;
+  vertical-align: middle !important;
+  border-left: none !important;
+  border-right: none !important;
+  background: white !important;
+}
+
+body.woocommerce table.cart .product-thumbnail img {
+  border-radius: 10px !important;
+  max-width: 80px !important;
+  height: 80px !important;
+  object-fit: cover !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ===== CART TOTALS ===== */
+body.woocommerce .cart-collaterals,
+body.woocommerce-page .cart-collaterals {
+  margin-top: 3rem !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+body.woocommerce .cart-collaterals .cart_totals,
+body.woocommerce-page .cart-collaterals .cart_totals {
+  background: white !important;
+  border-radius: 20px !important;
+  padding: 2.5rem !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+  border: 2px solid rgba(0, 102, 204, 0.1) !important;
+  float: none !important;
+  width: 100% !important;
+  max-width: 450px !important;
+  margin: 0 !important;
+}
+
+body.woocommerce .cart_totals h2,
+body.woocommerce-page .cart_totals h2 {
+  color: var(--vt-neutral-800) !important;
+  font-weight: 800 !important;
+  margin-bottom: 1.5rem !important;
+  text-align: center !important;
+  font-size: 1.5rem !important;
+  padding-bottom: 1rem !important;
+  border-bottom: 2px solid #E5E7EB !important;
+}
+
+body.woocommerce .cart_totals table,
+body.woocommerce-page .cart_totals table {
+  background: var(--vt-neutral-50) !important;
+  border-radius: 12px !important;
+  border: none !important;
+  overflow: hidden !important;
+}
+
+body.woocommerce .cart_totals table th,
+body.woocommerce .cart_totals table td,
+body.woocommerce-page .cart_totals table th,
+body.woocommerce-page .cart_totals table td {
+  padding: 1.25rem !important;
+  border: none !important;
+  font-weight: 600 !important;
+}
+
+body.woocommerce .cart_totals .order-total th,
+body.woocommerce .cart_totals .order-total td,
+body.woocommerce-page .cart_totals .order-total th,
+body.woocommerce-page .cart_totals .order-total td {
+  background: linear-gradient(135deg, var(--vt-blue-600), var(--vt-indigo-500)) !important;
+  color: white !important;
+  font-weight: 800 !important;
+  font-size: 1.125rem !important;
+}
+
+/* ===== CHECKOUT PAGE ===== */
+body.woocommerce-checkout .woocommerce .woocommerce-checkout {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 3rem !important;
+  margin-top: 2rem !important;
+}
+
+body.woocommerce-checkout .col2-set .col-1,
+body.woocommerce-checkout .col2-set .col-2 {
+  background: white !important;
+  padding: 2.5rem !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+  border: 2px solid rgba(0, 102, 204, 0.1) !important;
+  margin-bottom: 0 !important;
+}
+
+body.woocommerce-checkout #order_review_heading {
+  background: linear-gradient(135deg, var(--vt-blue-600), var(--vt-indigo-500)) !important;
+  color: white !important;
+  padding: 1.5rem 2.5rem !important;
+  margin: 0 0 2rem 0 !important;
+  border-radius: 20px 20px 0 0 !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+}
+
+body.woocommerce-checkout #order_review {
+  background: white !important;
+  padding: 2.5rem !important;
+  border-radius: 0 0 20px 20px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+  border: 2px solid rgba(0, 102, 204, 0.1) !important;
+  border-top: none !important;
+  margin: 0 !important;
+}
+
+body.woocommerce-checkout .woocommerce-checkout h3 {
+  color: var(--vt-neutral-800) !important;
+  font-weight: 800 !important;
+  margin-bottom: 2rem !important;
+  padding-bottom: 1rem !important;
+  border-bottom: 3px solid var(--vt-blue-600) !important;
+  font-size: 1.375rem !important;
+  position: relative !important;
+}
+
+body.woocommerce-checkout .woocommerce-checkout h3::before {
+  content: "📋" !important;
+  margin-right: 0.75rem !important;
+  font-size: 1.125rem !important;
+}
+
+/* ===== MY ACCOUNT PAGE ===== */
+body.woocommerce-account .woocommerce {
+  display: grid !important;
+  grid-template-columns: 300px 1fr !important;
+  gap: 3rem !important;
+  align-items: flex-start !important;
+}
+
+body.woocommerce-account .woocommerce-MyAccount-navigation {
+  background: white !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+  border: 2px solid rgba(0, 102, 204, 0.1) !important;
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+  overflow: hidden !important;
+  position: sticky !important;
+  top: 2rem !important;
+}
+
+body.woocommerce-account .woocommerce-MyAccount-navigation::before {
+  content: "👤 Minha Conta" !important;
+  display: block !important;
+  background: linear-gradient(135deg, var(--vt-blue-600), var(--vt-indigo-500)) !important;
+  color: white !important;
+  padding: 1.5rem 2rem !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+  margin-bottom: 0 !important;
+  font-size: 1.125rem !important;
+}
+
+body.woocommerce-account .woocommerce-MyAccount-navigation ul {
+  list-style: none !important;
+  padding: 1.5rem 0 !important;
+  margin: 0 !important;
+}
+
+body.woocommerce-account .woocommerce-MyAccount-navigation li {
+  margin-bottom: 0 !important;
+  border-bottom: 1px solid #E5E7EB !important;
+}
+
+body.woocommerce-account .woocommerce-MyAccount-navigation li:last-child {
+  border-bottom: none !important;
+}
+
+body.woocommerce-account .woocommerce-MyAccount-navigation a {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  padding: 1.25rem 2rem !important;
+  color: #6B7280 !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  border-left: 4px solid transparent !important;
+}
+
+body.woocommerce-account .woocommerce-MyAccount-navigation a::before {
+  content: "📋" !important;
+  font-size: 1.125rem !important;
+  opacity: 0.7 !important;
+}
+
+body.woocommerce-account .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link--dashboard a::before {
+  content: "🏠" !important;
+}
+
+body.woocommerce-account .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link--orders a::before {
+  content: "📦" !important;
+}
+
+body.woocommerce-account .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link--downloads a::before {
+  content: "⬇️" !important;
+}
+
+body.woocommerce-account .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link--edit-address a::before {
+  content: "📍" !important;
+}
+
+body.woocommerce-account .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link--edit-account a::before {
+  content: "👤" !important;
+}
+
+body.woocommerce-account .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link--customer-logout a::before {
+  content: "🚪" !important;
+}
+
+body.woocommerce-account .woocommerce-MyAccount-navigation a:hover,
+body.woocommerce-account .woocommerce-MyAccount-navigation .is-active a {
+  background: linear-gradient(135deg, #F0F9FF, #E0F2FE) !important;
+  color: var(--vt-blue-600) !important;
+  border-left-color: var(--vt-blue-600) !important;
+  transform: translateX(4px) !important;
+}
+
+body.woocommerce-account .woocommerce-MyAccount-navigation a:hover::before,
+body.woocommerce-account .woocommerce-MyAccount-navigation .is-active a::before {
+  opacity: 1 !important;
+  transform: scale(1.1) !important;
+}
+
+body.woocommerce-account .woocommerce-MyAccount-content {
+  background: white !important;
+  border-radius: 20px !important;
+  padding: 3rem !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+  border: 2px solid rgba(0, 102, 204, 0.1) !important;
+}
+
+body.woocommerce-account .woocommerce-MyAccount-content::before {
+  content: "📊 Painel do Cliente" !important;
+  display: block !important;
+  background: linear-gradient(135deg, var(--vt-neutral-50), white) !important;
+  color: var(--vt-neutral-800) !important;
+  padding: 1.5rem 2rem !important;
+  margin: -3rem -3rem 2rem -3rem !important;
+  border-radius: 20px 20px 0 0 !important;
+  border-bottom: 3px solid var(--vt-blue-600) !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+  font-size: 1.25rem !important;
+}
+
+/* ===== FORMULÁRIOS ===== */
+body.woocommerce .form-row,
+body.woocommerce-page .form-row {
+  margin-bottom: 1.5rem !important;
+}
+
+body.woocommerce .form-row label,
+body.woocommerce-page .form-row label {
+  font-weight: 700 !important;
+  color: var(--vt-neutral-800) !important;
+  margin-bottom: 0.75rem !important;
+  display: block !important;
+  font-size: 0.9rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+body.woocommerce .form-row label .required,
+body.woocommerce-page .form-row label .required {
+  color: var(--vt-error-500) !important;
+  font-weight: 800 !important;
+}
+
+body.woocommerce .form-row input.input-text,
+body.woocommerce .form-row select,
+body.woocommerce .form-row textarea,
+body.woocommerce-page .form-row input.input-text,
+body.woocommerce-page .form-row select,
+body.woocommerce-page .form-row textarea {
+  width: 100% !important;
+  border: 2px solid #E5E7EB !important;
+  border-radius: 12px !important;
+  padding: 1rem 1.25rem !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+  background: white !important;
+  color: var(--vt-neutral-800) !important;
+  line-height: 1.5 !important;
+}
+
+body.woocommerce .form-row input.input-text:focus,
+body.woocommerce .form-row select:focus,
+body.woocommerce .form-row textarea:focus,
+body.woocommerce-page .form-row input.input-text:focus,
+body.woocommerce-page .form-row select:focus,
+body.woocommerce-page .form-row textarea:focus {
+  border-color: var(--vt-blue-600) !important;
+  box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1) !important;
+  outline: none !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ===== BOTÕES VANCOUVERTEC ===== */
+body.woocommerce a.button,
+body.woocommerce button.button,
+body.woocommerce input.button,
+body.woocommerce input[type="submit"],
+body.woocommerce .button,
+body.woocommerce-page a.button,
+body.woocommerce-page button.button,
+body.woocommerce-page input.button,
+body.woocommerce-page input[type="submit"],
+body.woocommerce-page .button {
+  background: linear-gradient(135deg, var(--vt-blue-600), var(--vt-indigo-500)) !important;
+  color: white !important;
+  border: 2px solid var(--vt-blue-600) !important;
+  border-radius: 12px !important;
+  padding: 1rem 2rem !important;
+  font-weight: 800 !important;
+  font-size: 1rem !important;
+  text-transform: none !important;
+  transition: all 0.3s ease !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3) !important;
+  letter-spacing: 0.025em !important;
+}
+
+body.woocommerce a.button:hover,
+body.woocommerce button.button:hover,
+body.woocommerce input.button:hover,
+body.woocommerce input[type="submit"]:hover,
+body.woocommerce .button:hover,
+body.woocommerce-page a.button:hover,
+body.woocommerce-page button.button:hover,
+body.woocommerce-page input.button:hover,
+body.woocommerce-page input[type="submit"]:hover,
+body.woocommerce-page .button:hover {
+  background: linear-gradient(135deg, var(--vt-blue-700), #4F46E5) !important;
+  border-color: var(--vt-blue-700) !important;
+  color: white !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 25px rgba(0, 102, 204, 0.4) !important;
+}
+
+/* ===== MENSAGENS ===== */
+body.woocommerce .woocommerce-message,
+body.woocommerce .woocommerce-info,
+body.woocommerce .woocommerce-error,
+body.woocommerce-page .woocommerce-message,
+body.woocommerce-page .woocommerce-info,
+body.woocommerce-page .woocommerce-error {
+  padding: 1.5rem 2rem !important;
+  border-radius: 15px !important;
+  margin: 1.5rem 0 !important;
+  border: none !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  border-left: 5px solid !important;
+}
+
+body.woocommerce .woocommerce-message,
+body.woocommerce-page .woocommerce-message {
+  background: linear-gradient(135deg, #D1FAE5, #A7F3D0) !important;
+  color: #047857 !important;
+  border-left-color: var(--vt-success-500) !important;
+}
+
+body.woocommerce .woocommerce-message::before,
+body.woocommerce-page .woocommerce-message::before {
+  content: "✅ " !important;
+  font-weight: 800 !important;
+}
+
+body.woocommerce .woocommerce-error,
+body.woocommerce-page .woocommerce-error {
+  background: linear-gradient(135deg, #FEE2E2, #FECACA) !important;
+  color: #DC2626 !important;
+  border-left-color: var(--vt-error-500) !important;
+}
+
+body.woocommerce .woocommerce-error::before,
+body.woocommerce-page .woocommerce-error::before {
+  content: "❌ " !important;
+  font-weight: 800 !important;
+}
+
+body.woocommerce .woocommerce-info,
+body.woocommerce-page .woocommerce-info {
+  background: linear-gradient(135deg, #DBEAFE, #BFDBFE) !important;
+  color: var(--vt-blue-700) !important;
+  border-left-color: var(--vt-blue-600) !important;
+}
+
+body.woocommerce .woocommerce-info::before,
+body.woocommerce-page .woocommerce-info::before {
+  content: "ℹ️ " !important;
+  font-weight: 800 !important;
+}
+
+body.single-product .woocommerce div.product {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 4rem !important;
+  margin-bottom: 3rem !important;
+}
+
+body.single-product .woocommerce div.product .woocommerce-product-gallery {
+  grid-column: 1 !important;
+  position: sticky !important;
+  top: 2rem !important;
+  height: fit-content !important;
+}
+
+body.single-product .woocommerce div.product .summary {
+  grid-column: 2 !important;
+  padding: 2rem !important;
+  background: white !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+  border: 2px solid rgba(0, 102, 204, 0.1) !important;
+}
+
+body.single-product .woocommerce div.product .product_title {
+  font-size: 2.5rem !important;
+  font-weight: 800 !important;
+  color: var(--vt-neutral-800) !important;
+  margin-bottom: 1.5rem !important;
+  line-height: 1.2 !important;
+}
+
+body.single-product .woocommerce div.product .price {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  color: var(--vt-blue-600) !important;
+  margin-bottom: 2rem !important;
+}
+
+/* ===== WISHLIST/FAVORITOS ===== */
+.vt-wishlist-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  background: rgba(239, 68, 68, 0.1) !important;
+  color: #EF4444 !important;
+  border: 2px solid #EF4444 !important;
+  border-radius: 12px !important;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+.vt-wishlist-btn:hover,
+.vt-wishlist-btn.active {
+  background: #EF4444 !important;
+  color: white !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3) !important;
+}
+
+.vt-wishlist-btn .heart-icon {
+  font-size: 1.125rem !important;
+  transition: transform 0.3s ease !important;
+}
+
+.vt-wishlist-btn.active .heart-icon {
+  transform: scale(1.2) !important;
+}
+
+/* Página Wishlist */
+.vt-wishlist-page {
+  padding: 3rem 0 !important;
+}
+
+.vt-wishlist-page .page-header {
+  text-align: center !important;
+  margin-bottom: 3rem !important;
+  background: linear-gradient(135deg, white 0%, var(--vt-neutral-50) 100%) !important;
+  padding: 3rem 2rem !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+  border: 2px solid rgba(0, 102, 204, 0.1) !important;
+}
+
+.vt-wishlist-page .page-title {
+  font-size: 2.5rem !important;
+  font-weight: 800 !important;
+  color: var(--vt-neutral-800) !important;
+  margin-bottom: 1rem !important;
+}
+
+.vt-wishlist-page .page-title::before {
+  content: "💝 " !important;
+  color: #EF4444 !important;
+}
+
+.vt-wishlist-empty {
+  text-align: center !important;
+  padding: 4rem 2rem !important;
+  background: white !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+  border: 2px solid rgba(0, 102, 204, 0.1) !important;
+}
+
+.vt-wishlist-empty::before {
+  content: "💔" !important;
+  font-size: 4rem !important;
+  display: block !important;
+  margin-bottom: 1.5rem !important;
+  opacity: 0.7 !important;
+}
+
+
+/* ===== CORREÇÕES RESPONSIVAS SEGURAS ===== */
+@media (max-width: 1024px) {
+  /* Checkout Mobile */
+  body.woocommerce-checkout .woocommerce .woocommerce-checkout {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  
+  /* My Account Mobile */
+  body.woocommerce-account .woocommerce {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  
+  body.woocommerce-account .woocommerce-MyAccount-navigation {
+    position: relative !important;
+    top: 0 !important;
+    order: 1 !important;
+  }
+  
+  body.woocommerce-account .woocommerce-MyAccount-content {
+    order: 2 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Geral Mobile */
+  body.woocommerce .site-main,
+  body.woocommerce-page .site-main {
+    padding: 1rem !important;
+  }
+  
+  body.woocommerce .woocommerce,
+  body.woocommerce-page .woocommerce {
+    padding: 1.5rem !important;
+  }
+  
+  /* Títulos Mobile */
+  body.woocommerce .entry-title,
+  body.woocommerce-page .entry-title {
+    font-size: 1.875rem !important;
+  }
+  
+  /* Tabelas Mobile */
+  body.woocommerce table.cart th,
+  body.woocommerce table.shop_table th,
+  body.woocommerce table.cart td,
+  body.woocommerce table.shop_table td {
+    padding: 0.75rem 0.5rem !important;
+    font-size: 0.875rem !important;
+  }
+  
+  /* Formulários Mobile */
+  body.woocommerce .form-row input.input-text,
+  body.woocommerce .form-row select,
+  body.woocommerce .form-row textarea {
+    padding: 0.875rem 1rem !important;
+    font-size: 0.9rem !important;
+  }
+  
+  /* Botões Mobile */
+  body.woocommerce .button,
+  body.woocommerce-page .button {
+    padding: 0.875rem 1.5rem !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra Small Mobile */
+  body.woocommerce .entry-header,
+  body.woocommerce-page .entry-header {
+    padding: 2rem 1rem !important;
+  }
+  
+  body.woocommerce .entry-title,
+  body.woocommerce-page .entry-title {
+    font-size: 1.5rem !important;
+  }
+  
+  body.woocommerce .woocommerce,
+  body.woocommerce-page .woocommerce {
+    padding: 1rem !important;
+  }
+}
+
+/* ===== WISHLIST BÁSICO ===== */
+.vt-wishlist-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  background: rgba(239, 68, 68, 0.1) !important;
+  color: #EF4444 !important;
+  border: 2px solid #EF4444 !important;
+  border-radius: 12px !important;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+.vt-wishlist-btn:hover,
+.vt-wishlist-btn.active {
+  background: #EF4444 !important;
+  color: white !important;
+  transform: translateY(-2px) !important;
+}
+
+.vt-wishlist-page {
+  padding: 3rem 0 !important;
+}
+
+.vt-wishlist-page .page-header {
+  text-align: center !important;
+  margin-bottom: 3rem !important;
+  background: white !important;
+  padding: 3rem 2rem !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+.vt-wishlist-page .page-title {
+  font-size: 2.5rem !important;
+  font-weight: 800 !important;
+  color: #1F2937 !important;
+  margin-bottom: 1rem !important;
+}
+
+.vt-wishlist-empty {
+  text-align: center !important;
+  padding: 4rem 2rem !important;
+  background: white !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
