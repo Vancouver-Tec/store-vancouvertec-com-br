@@ -1,0 +1,308 @@
+/**
+ * VancouverTec Store - Mobile CSS
+ * Mobile-First Responsive Design
+ */
+
+/* ========================================
+   MOBILE BREAKPOINTS
+   ======================================== */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    padding: 0 var(--vt-space-md);
+  }
+  
+  .vt-product-container {
+    grid-template-columns: 1fr;
+    gap: var(--vt-space-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Typography mobile */
+  h1 { font-size: 1.875rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+  
+  .vt-page-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+  
+  /* Navigation mobile */
+  .vt-mobile-nav {
+    display: block;
+  }
+  
+  .vt-desktop-nav {
+    display: none;
+  }
+  
+  /* Products grid mobile */
+  .woocommerce ul.products {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--vt-space-md);
+  }
+  
+  /* Single product mobile */
+  .vt-single-product {
+    padding: var(--vt-space-md);
+    margin-bottom: var(--vt-space-md);
+  }
+  
+  .woocommerce div.product .product_title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  
+  .vt-price-section {
+    text-align: center;
+  }
+  
+  .woocommerce div.product p.price {
+    font-size: 1.75rem;
+  }
+  
+  /* Trust badges mobile */
+  .vt-trust-badges {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Cart mobile */
+  .woocommerce table.cart {
+    font-size: 0.875rem;
+  }
+  
+  .woocommerce table.cart th,
+  .woocommerce table.cart td {
+    padding: var(--vt-space-sm);
+  }
+  
+  /* Checkout mobile */
+  .vt-checkout-steps {
+    flex-direction: column;
+    gap: var(--vt-space-sm);
+  }
+  
+  .vt-step {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .vt-step-separator {
+    width: 2px;
+    height: 20px;
+  }
+  
+  /* Security badges mobile */
+  .vt-security-badges {
+    grid-template-columns: 1fr;
+    gap: var(--vt-space-sm);
+  }
+  
+  /* Account navigation mobile */
+  .vt-account-nav ul {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--vt-space-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small screens */
+  :root {
+    --vt-space-sm: 0.75rem;
+    --vt-space-md: 1rem;
+    --vt-space-lg: 1.5rem;
+  }
+  
+  .container {
+    padding: 0 var(--vt-space-sm);
+  }
+  
+  /* Products single column */
+  .woocommerce ul.products {
+    grid-template-columns: 1fr;
+    gap: var(--vt-space-sm);
+  }
+  
+  /* Mobile buttons */
+  .button, .btn {
+    width: 100%;
+    padding: var(--vt-space-md);
+    font-size: 1rem;
+  }
+  
+  .woocommerce .single_add_to_cart_button {
+    width: 100%;
+    padding: var(--vt-space-lg);
+    font-size: 1.125rem;
+  }
+  
+  /* Typography extra small */
+  .vt-page-title {
+    font-size: 1.75rem;
+  }
+  
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.25rem; }
+  h3 { font-size: 1.125rem; }
+  
+  /* Mobile spacing */
+  .vt-main-content {
+    padding: var(--vt-space-md) 0;
+  }
+}
+
+/* ========================================
+   MOBILE TOUCH INTERACTIONS
+   ======================================== */
+@media (hover: none) and (pointer: coarse) {
+  /* Touch devices */
+  .woocommerce ul.products li.product:hover {
+    transform: none;
+  }
+  
+  .button:hover,
+  .btn:hover {
+    transform: none;
+  }
+  
+  .vt-card:hover {
+    transform: none;
+  }
+  
+  /* Bigger touch targets */
+  .button, .btn, 
+  .woocommerce .button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* ========================================
+   MOBILE NAVIGATION
+   ======================================== */
+.vt-mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 280px;
+  height: 100vh;
+  background: white;
+  box-shadow: var(--vt-shadow-xl);
+  transition: left 0.3s ease;
+  z-index: 9999;
+  overflow-y: auto;
+}
+
+.vt-mobile-menu.active {
+  left: 0;
+}
+
+.vt-mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 9998;
+}
+
+.vt-mobile-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.vt-mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--vt-neutral-800);
+  cursor: pointer;
+  padding: var(--vt-space-sm);
+}
+
+@media (max-width: 768px) {
+  .vt-mobile-toggle {
+    display: block;
+  }
+}
+
+/* ========================================
+   LOADING STATES MOBILE
+   ======================================== */
+.vt-mobile-loading {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: var(--vt-space-lg);
+  border-radius: var(--vt-radius-lg);
+  box-shadow: var(--vt-shadow-xl);
+  z-index: 10000;
+}
+
+.vt-mobile-loading.active {
+  display: block;
+}
+
+.vt-mobile-loading .vt-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--vt-neutral-200);
+  border-top-color: var(--vt-blue-600);
+  border-radius: 50%;
+  animation: vt-spin 1s linear infinite;
+}
+
+/* ========================================
+   MOBILE UTILITIES
+   ======================================== */
+@media (max-width: 768px) {
+  .vt-hide-mobile {
+    display: none !important;
+  }
+  
+  .vt-show-mobile {
+    display: block !important;
+  }
+  
+  .vt-text-center-mobile {
+    text-align: center !important;
+  }
+  
+  .vt-full-width-mobile {
+    width: 100% !important;
+  }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+@media print {
+  .vt-mobile-toggle,
+  .vt-mobile-menu,
+  .vt-mobile-overlay,
+  .button,
+  .btn {
+    display: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+}

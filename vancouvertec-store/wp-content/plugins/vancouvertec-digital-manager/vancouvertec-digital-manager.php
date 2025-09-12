@@ -1,103 +1,134 @@
 <?php
 /**
  * Plugin Name: VancouverTec Digital Manager
- * Plugin URI: https://store.vancouvertec.com.br
- * Description: Plugin proprietário para gerenciamento de produtos digitais, cursos e downloads seguros da VancouverTec Store.
+ * Description: Sistema simples para produtos digitais VancouverTec
  * Version: 1.0.0
  * Author: VancouverTec
- * Author URI: https://vancouvertec.com.br
- * License: Proprietary
  * Text Domain: vancouvertec
- * Domain Path: /languages
- * Requires at least: 6.4
- * Tested up to: 6.5
- * Requires PHP: 8.0
- * @package VancouverTec_Digital_Manager
  */
 
-if (!defined('ABSPATH')) exit;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
-define('VT_PLUGIN_VERSION', '1.0.0');
-define('VT_PLUGIN_FILE', __FILE__);
-define('VT_PLUGIN_DIR', plugin_dir_path(__FILE__));
-define('VT_PLUGIN_URL', plugin_dir_url(__FILE__));
-define('VT_PLUGIN_BASENAME', plugin_basename(__FILE__));
-
-final class VancouverTec_Digital_Manager {
-    private static $instance = null;
+class VancouverTec_Simple_Manager {
     
-    public static function get_instance() {
-        if (null === self::$instance) {
-            self::$instance = new self();
+    public function __construct() {
+        add_action('init', [$this, 'init']);
+    }
+    
+    public function init() {
+        // Verificar WooCommerce
+        if (!class_exists('WooCommerce')) {
+            return;
         }
-        return self::$instance;
-    }
-    
-    private function __construct() {
-        $this->init();
-    }
-    
-    private function init() {
-        register_activation_hook(VT_PLUGIN_FILE, array($this, 'activate'));
-        register_deactivation_hook(VT_PLUGIN_FILE, array($this, 'deactivate'));
-        add_action('plugins_loaded', array($this, 'load_textdomain'));
-        add_action('init', array($this, 'init_plugin'));
-    }
-    
-    public function activate() {
-        $this->create_tables();
-        flush_rewrite_rules();
-    }
-    
-    public function deactivate() {
-        flush_rewrite_rules();
-    }
-    
-    public function load_textdomain() {
-        load_plugin_textdomain('vancouvertec', false, dirname(VT_PLUGIN_BASENAME) . '/languages');
-    }
-    
-    public function init_plugin() {
-        // Plugin initialization logic here
-    }
-    
-    private function create_tables() {
-        global $wpdb;
-        $charset_collate = $wpdb->get_charset_collate();
         
-        $table_downloads = $wpdb->prefix . 'vt_downloads';
-        $sql_downloads = "CREATE TABLE $table_downloads (
-            id mediumint(9) NOT NULL AUTO_INCREMENT,
-            user_id bigint(20) NOT NULL,
-            product_id bigint(20) NOT NULL,
-            download_key varchar(255) NOT NULL,
-            downloads_remaining int(11) NOT NULL DEFAULT -1,
-            download_count int(11) NOT NULL DEFAULT 0,
-            created_at datetime DEFAULT CURRENT_TIMESTAMP,
-            expires_at datetime,
-            PRIMARY KEY (id),
-            KEY user_id (user_id),
-            KEY product_id (product_id),
-            KEY download_key (download_key)
-        ) $charset_collate;";
+        // Hooks básicos
+        add_action('add_meta_boxes', [$this, 'add_specifications_meta_box']);
+        add_action('save_post', [$this, 'save_specifications']);
+        add_shortcode('vt_specifications', [$this, 'specifications_shortcode']);
+    }
+    
+    public function add_specifications_meta_box() {
+        add_meta_box(
+            'vt_specifications',
+            'Especificações VancouverTec',
+            [$this, 'specifications_meta_box'],
+            'product',
+            'normal',
+            'high'
+        );
+    }
+    
+    public function specifications_meta_box($post) {
+        wp_nonce_field('vt_specs_nonce', 'vt_specs_nonce_field');
         
-        $table_progress = $wpdb->prefix . 'vt_course_progress';
-        $sql_progress = "CREATE TABLE $table_progress (
-            id mediumint(9) NOT NULL AUTO_INCREMENT,
-            user_id bigint(20) NOT NULL,
-            course_id bigint(20) NOT NULL,
-            lesson_id bigint(20) NOT NULL,
-            completed tinyint(1) DEFAULT 0,
-            completed_at datetime,
-            PRIMARY KEY (id),
-            KEY user_id (user_id),
-            KEY course_id (course_id)
-        ) $charset_collate;";
+        $technology = get_post_meta($post->ID, '_vt_technology', true);
+        $modules = get_post_meta($post->ID, '_vt_modules', true);
+        $license = get_post_meta($post->ID, '_vt_license', true);
+        $support = get_post_meta($post->ID, '_vt_support', true);
+        ?>
+        <table class="form-table">
+            <tr>
+                <th><label for="vt_technology">Tecnologia</label></th>
+                <td><input type="text" id="vt_technology" name="vt_technology" value="<?php echo esc_attr($technology); ?>" class="regular-text" /></td>
+            </tr>
+            <tr>
+                <th><label for="vt_modules">Módulos</label></th>
+                <td><input type="text" id="vt_modules" name="vt_modules" value="<?php echo esc_attr($modules); ?>" class="regular-text" /></td>
+            </tr>
+            <tr>
+                <th><label for="vt_license">Licença</label></th>
+                <td><input type="text" id="vt_license" name="vt_license" value="<?php echo esc_attr($license); ?>" class="regular-text" /></td>
+            </tr>
+            <tr>
+                <th><label for="vt_support">Suporte</label></th>
+                <td><input type="text" id="vt_support" name="vt_support" value="<?php echo esc_attr($support); ?>" class="regular-text" /></td>
+            </tr>
+        </table>
+        <?php
+    }
+    
+    public function save_specifications($post_id) {
+        if (!isset($_POST['vt_specs_nonce_field']) || 
+            !wp_verify_nonce($_POST['vt_specs_nonce_field'], 'vt_specs_nonce')) {
+            return;
+        }
         
-        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-        dbDelta($sql_downloads);
-        dbDelta($sql_progress);
+        if (!current_user_can('edit_post', $post_id)) {
+            return;
+        }
+        
+        $fields = ['vt_technology', 'vt_modules', 'vt_license', 'vt_support'];
+        
+        foreach ($fields as $field) {
+            if (isset($_POST[$field])) {
+                update_post_meta($post_id, '_' . $field, sanitize_text_field($_POST[$field]));
+            }
+        }
+    }
+    
+    public function specifications_shortcode($atts) {
+        $atts = shortcode_atts(['id' => get_the_ID()], $atts);
+        
+        $technology = get_post_meta($atts['id'], '_vt_technology', true);
+        $modules = get_post_meta($atts['id'], '_vt_modules', true);
+        $license = get_post_meta($atts['id'], '_vt_license', true);
+        $support = get_post_meta($atts['id'], '_vt_support', true);
+        
+        ob_start();
+        ?>
+        <div class="vt-specifications">
+            <h3>Especificações Técnicas</h3>
+            <div class="vt-specs-grid">
+                <?php if ($technology): ?>
+                <div class="vt-spec-item">
+                    <strong>🔧 Tecnologia:</strong> <?php echo esc_html($technology); ?>
+                </div>
+                <?php endif; ?>
+                
+                <?php if ($modules): ?>
+                <div class="vt-spec-item">
+                    <strong>📦 Módulos:</strong> <?php echo esc_html($modules); ?>
+                </div>
+                <?php endif; ?>
+                
+                <?php if ($license): ?>
+                <div class="vt-spec-item">
+                    <strong>📜 Licença:</strong> <?php echo esc_html($license); ?>
+                </div>
+                <?php endif; ?>
+                
+                <?php if ($support): ?>
+                <div class="vt-spec-item">
+                    <strong>🎯 Suporte:</strong> <?php echo esc_html($support); ?>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php
+        return ob_get_clean();
     }
 }
 
-VancouverTec_Digital_Manager::get_instance();
+new VancouverTec_Simple_Manager();

@@ -1,0 +1,432 @@
+/**
+ * VancouverTec Store - WooCommerce CSS Completo
+ * Design Azul Institucional VancouverTec
+ */
+
+/* ========================================
+   WOOCOMMERCE BASE
+   ======================================== */
+
+/* Remove estilos padrão WooCommerce */
+.woocommerce-page .entry-header,
+.woocommerce-page .entry-title {
+  display: none;
+}
+
+/* Container principal WooCommerce */
+.woocommerce,
+.woocommerce-page {
+  font-family: var(--vt-font-primary);
+}
+
+/* ========================================
+   BOTÕES WOOCOMMERCE
+   ======================================== */
+.woocommerce .button,
+.woocommerce button,
+.woocommerce input[type="submit"],
+.woocommerce-page .button,
+.woocommerce-page button,
+.woocommerce-page input[type="submit"] {
+  background: var(--vt-blue-600);
+  color: white;
+  border: none;
+  padding: var(--vt-space-xs) var(--vt-space-md);
+  border-radius: var(--vt-radius-md);
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: var(--vt-transition);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--vt-shadow-sm);
+}
+
+.woocommerce .button:hover,
+.woocommerce button:hover,
+.woocommerce input[type="submit"]:hover {
+  background: var(--vt-blue-700);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: var(--vt-shadow-md);
+}
+
+/* Botão adicionar ao carrinho */
+.woocommerce .single_add_to_cart_button {
+  background: linear-gradient(135deg, var(--vt-success-500) 0%, var(--vt-success-600) 100%);
+  font-size: 1rem;
+  padding: var(--vt-space-md) var(--vt-space-xl);
+  min-width: 200px;
+}
+
+.woocommerce .single_add_to_cart_button:hover {
+  background: var(--vt-success-600);
+}
+
+/* ========================================
+   PRODUTOS - GRID E CARDS
+   ======================================== */
+.woocommerce ul.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--vt-space-lg);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.woocommerce ul.products li.product {
+  background: white;
+  border-radius: var(--vt-radius-lg);
+  box-shadow: var(--vt-shadow-sm);
+  border: 1px solid var(--vt-neutral-100);
+  padding: 0;
+  transition: var(--vt-transition);
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+}
+
+.woocommerce ul.products li.product:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--vt-shadow-lg);
+}
+
+/* Imagem do produto */
+.woocommerce ul.products li.product .woocommerce-LoopProduct-link {
+  display: block;
+  text-decoration: none;
+}
+
+.woocommerce ul.products li.product img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: var(--vt-radius-md) var(--vt-radius-md) 0 0;
+}
+
+/* Conteúdo do produto */
+.woocommerce ul.products li.product .woocommerce-loop-product__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--vt-neutral-800);
+  margin: var(--vt-space-sm) var(--vt-space-md) var(--vt-space-xs);
+  line-height: 1.4;
+}
+
+.woocommerce ul.products li.product .price {
+  color: var(--vt-blue-600);
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin: 0 var(--vt-space-md) var(--vt-space-md);
+}
+
+.woocommerce ul.products li.product .price del {
+  color: var(--vt-neutral-400);
+  font-size: 1rem;
+}
+
+/* Botão do produto no loop */
+.woocommerce ul.products li.product .button {
+  margin: var(--vt-space-md);
+  width: calc(100% - 2rem);
+}
+
+/* ========================================
+   SINGLE PRODUCT - PÁGINA DO PRODUTO
+   ======================================== */
+.woocommerce div.product {
+  margin-bottom: var(--vt-space-xl);
+}
+
+.vt-single-product {
+  background: white;
+  border-radius: var(--vt-radius-xl);
+  box-shadow: var(--vt-shadow-sm);
+  padding: var(--vt-space-xl);
+  margin-bottom: var(--vt-space-xl);
+}
+
+.vt-product-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--vt-space-xl);
+  margin-bottom: var(--vt-space-xl);
+}
+
+/* Galeria de imagens */
+.vt-product-gallery {
+  position: relative;
+}
+
+.vt-main-image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--vt-radius-lg);
+  box-shadow: var(--vt-shadow-md);
+}
+
+.vt-gallery-thumbs {
+  display: flex;
+  gap: var(--vt-space-sm);
+  margin-top: var(--vt-space-md);
+}
+
+.vt-thumb {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--vt-radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: var(--vt-transition);
+}
+
+.vt-thumb:hover {
+  border-color: var(--vt-blue-600);
+}
+
+.vt-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Summary do produto */
+.vt-product-summary {
+  padding: var(--vt-space-md);
+}
+
+.vt-product-header {
+  margin-bottom: var(--vt-space-lg);
+}
+
+.woocommerce div.product .product_title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--vt-neutral-900);
+  margin-bottom: var(--vt-space-md);
+}
+
+.vt-product-badges {
+  display: flex;
+  gap: var(--vt-space-xs);
+  margin-bottom: var(--vt-space-md);
+}
+
+/* Preço */
+.vt-price-section {
+  background: var(--vt-neutral-50);
+  padding: var(--vt-space-md);
+  border-radius: var(--vt-radius-lg);
+  margin-bottom: var(--vt-space-lg);
+}
+
+.woocommerce div.product p.price {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--vt-blue-600);
+  margin-bottom: var(--vt-space-sm);
+}
+
+.vt-installments {
+  color: var(--vt-neutral-600);
+  font-size: 0.875rem;
+}
+
+/* Trust badges */
+.vt-trust-badges {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--vt-space-sm);
+  margin: var(--vt-space-lg) 0;
+  padding: var(--vt-space-md);
+  background: var(--vt-success-50, #F0FDF4);
+  border-radius: var(--vt-radius-lg);
+  border: 1px solid var(--vt-success-200, #BBF7D0);
+}
+
+.vt-trust-item {
+  display: flex;
+  align-items: center;
+  gap: var(--vt-space-sm);
+  color: var(--vt-success-700, #15803D);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.vt-trust-item .vt-icon {
+  font-size: 1.25rem;
+}
+
+/* ========================================
+   CARRINHO
+   ======================================== */
+.vt-cart-page {
+  padding: var(--vt-space-xl) 0;
+}
+
+.vt-cart-header {
+  text-align: center;
+  margin-bottom: var(--vt-space-xl);
+}
+
+.vt-cart-header h1 {
+  font-size: 2.5rem;
+  color: var(--vt-blue-600);
+  margin-bottom: var(--vt-space-sm);
+}
+
+.vt-cart-subtitle {
+  color: var(--vt-neutral-600);
+  font-size: 1.125rem;
+}
+
+.woocommerce table.cart {
+  background: white;
+  border-radius: var(--vt-radius-lg);
+  box-shadow: var(--vt-shadow-sm);
+  overflow: hidden;
+}
+
+.woocommerce table.cart th,
+.woocommerce table.cart td {
+  padding: var(--vt-space-md);
+  border-bottom: 1px solid var(--vt-neutral-100);
+}
+
+.woocommerce table.cart th {
+  background: var(--vt-neutral-50);
+  font-weight: 600;
+  color: var(--vt-neutral-800);
+}
+
+/* ========================================
+   CHECKOUT
+   ======================================== */
+.vt-checkout-page {
+  padding: var(--vt-space-xl) 0;
+}
+
+.vt-checkout-header {
+  text-align: center;
+  margin-bottom: var(--vt-space-xl);
+}
+
+.vt-checkout-steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--vt-space-md);
+  margin-top: var(--vt-space-lg);
+}
+
+.vt-step {
+  display: flex;
+  align-items: center;
+  gap: var(--vt-space-xs);
+  padding: var(--vt-space-sm) var(--vt-space-md);
+  background: var(--vt-neutral-100);
+  border-radius: var(--vt-radius-lg);
+  color: var(--vt-neutral-600);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.vt-step.active {
+  background: var(--vt-blue-600);
+  color: white;
+}
+
+.vt-step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.vt-step-separator {
+  width: 20px;
+  height: 2px;
+  background: var(--vt-neutral-200);
+}
+
+/* Security badges */
+.vt-security-badges {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--vt-space-md);
+  margin-top: var(--vt-space-xl);
+}
+
+.vt-security-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--vt-space-xs);
+  padding: var(--vt-space-md);
+  background: var(--vt-neutral-50);
+  border-radius: var(--vt-radius-lg);
+  border: 1px solid var(--vt-neutral-200);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--vt-neutral-700);
+}
+
+/* ========================================
+   RESPONSIVO WOOCOMMERCE
+   ======================================== */
+@media (max-width: 768px) {
+  .woocommerce ul.products {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--vt-space-md);
+  }
+  
+  .vt-product-container {
+    grid-template-columns: 1fr;
+    gap: var(--vt-space-lg);
+  }
+  
+  .vt-checkout-steps {
+    flex-direction: column;
+    gap: var(--vt-space-sm);
+  }
+  
+  .vt-step-separator {
+    width: 2px;
+    height: 20px;
+  }
+  
+  .vt-security-badges {
+    grid-template-columns: 1fr;
+  }
+  
+  .vt-trust-badges {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .woocommerce ul.products {
+    grid-template-columns: 1fr;
+  }
+  
+  .vt-single-product {
+    padding: var(--vt-space-md);
+  }
+  
+  .vt-cart-header h1 {
+    font-size: 2rem;
+  }
+  
+  .woocommerce div.product .product_title {
+    font-size: 1.5rem;
+  }
+}

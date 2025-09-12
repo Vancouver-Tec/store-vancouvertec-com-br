@@ -1,3 +1,69 @@
+#!/bin/bash
+
+# ===========================================
+# VancouverTec Store - Variáveis CSS Fix
+# Script: 31l-variaveis-css-fix.sh
+# Versão: 1.0.0 - Corrigir variáveis CSS que estão faltando
+# ===========================================
+
+set -euo pipefail
+
+# Cores
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+PURPLE='\033[0;35m'
+NC='\033[0m'
+
+# Variáveis
+PROJECT_PATH="/home/$(whoami)/vancouvertec/store-vancouvertec-com-br/vancouvertec-store"
+THEME_PATH="wp-content/themes/vancouvertec-store"
+
+# Funções de log
+log_info() { echo -e "${BLUE}[INFO]${NC} $1"; }
+log_success() { echo -e "${GREEN}[SUCCESS]${NC} $1"; }
+log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
+log_warning() { echo -e "${YELLOW}[WARNING]${NC} $1"; }
+
+# Banner
+echo -e "${PURPLE}"
+cat << "EOF"
+╔══════════════════════════════════════════════╗
+║        🔧 VARIÁVEIS CSS FIX 🔧               ║
+║    Problema identificado: Variáveis CSS     ║
+╚══════════════════════════════════════════════╝
+EOF
+echo -e "${NC}"
+
+# Verificar base
+if [[ ! -d "$PROJECT_PATH" ]]; then
+    log_error "Projeto não encontrado: $PROJECT_PATH"
+    exit 1
+fi
+
+cd "$PROJECT_PATH"
+log_info "Corrigindo variáveis CSS em: $(pwd)"
+
+# Parar servidor
+if pgrep -f "php -S localhost:8080" > /dev/null; then
+    log_warning "Parando servidor..."
+    pkill -f "php -S localhost:8080" || true
+    sleep 2
+fi
+
+# PROBLEMA IDENTIFICADO: FALTAM AS VARIÁVEIS CSS!
+log_warning "PROBLEMA IDENTIFICADO: Os CSS usam variáveis que não existem!"
+log_info "Todos os arquivos CSS usam var(--vt-blue-600) mas as variáveis não estão definidas"
+
+# 1. ADICIONAR VARIÁVEIS CSS NO STYLE.CSS
+log_info "Adicionando variáveis CSS no style.css..."
+
+# Fazer backup do style.css atual
+cp "${THEME_PATH}/style.css" "${THEME_PATH}/style.css.backup"
+
+# Criar style.css com variáveis completas
+cat > "${THEME_PATH}/style.css" << 'EOF'
 /*
 Theme Name: VancouverTec Store
 Description: Tema premium para loja de produtos digitais da VancouverTec. Performance 99+, SEO avançado e design azul institucional moderno.
@@ -324,3 +390,64 @@ body.vt-body {
 .vt-card {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
 }
+EOF
+
+# 2. VERIFICAR SE O PROBLEMA FOI RESOLVIDO
+log_info "Verificando se as variáveis foram aplicadas..."
+
+# Iniciar servidor
+log_info "Iniciando servidor com variáveis CSS..."
+nohup php -S localhost:8080 router.php > server.log 2>&1 &
+echo $! > .server_pid
+sleep 3
+
+# Teste rápido
+if curl -s "http://localhost:8080" > /dev/null; then
+    log_success "✅ Servidor funcionando"
+else
+    log_error "❌ Servidor com problemas"
+fi
+
+# Verificar arquivo criado
+if [[ -f "${THEME_PATH}/style.css" ]]; then
+    log_success "✅ style.css com variáveis criado"
+    
+    # Verificar se tem as variáveis
+    if grep -q "vt-blue-600" "${THEME_PATH}/style.css"; then
+        log_success "✅ Variáveis CSS encontradas no arquivo"
+    else
+        log_error "❌ Variáveis não foram inseridas"
+    fi
+else
+    log_error "❌ style.css não foi criado"
+fi
+
+# Relatório
+echo -e "\n${GREEN}╔══════════════════════════════════════════════╗"
+echo -e "║      ✅ VARIÁVEIS CSS CORRIGIDAS! ✅          ║"
+echo -e "║                                              ║"
+echo -e "║  🎯 PROBLEMA IDENTIFICADO E RESOLVIDO:       ║"
+echo -e "║                                              ║"
+echo -e "║  ❌ Antes: CSS usava var(--vt-blue-600)      ║"
+echo -e "║      mas as variáveis não existiam           ║"
+echo -e "║                                              ║"
+echo -e "║  ✅ Agora: Todas as variáveis definidas      ║"
+echo -e "║      no style.css principal                  ║"
+echo -e "║                                              ║"
+echo -e "║  Variáveis CSS VancouverTec:                 ║"
+echo -e "║  • --vt-blue-600: #0066CC                    ║"
+echo -e "║  • --vt-blue-700: #0052A3                    ║"
+echo -e "║  • --vt-success-500: #10B981                 ║"
+echo -e "║  • --vt-neutral-800: #1F2937                 ║"
+echo -e "║  • --vt-space-xl: 3rem                       ║"
+echo -e "║  • E mais 30+ variáveis completas            ║"
+echo -e "║                                              ║"
+echo -e "║  🌐 Acesse: http://localhost:8080            ║"
+echo -e "║     🎯 AGORA O LAYOUT DEVE FUNCIONAR! 🎯     ║"
+echo -e "║                                              ║"
+echo -e "║  📋 Header azul + Footer + CSS aplicado      ║"
+echo -e "╚══════════════════════════════════════════════╝${NC}\n"
+
+log_success "🔧 Problema das variáveis CSS corrigido!"
+log_info "🚀 Recarregue a página para ver o layout VancouverTec funcionando!"
+log_warning "📝 Backup salvo como: style.css.backup"

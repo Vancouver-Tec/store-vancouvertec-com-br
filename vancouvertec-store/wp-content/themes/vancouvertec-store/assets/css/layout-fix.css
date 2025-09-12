@@ -1,0 +1,240 @@
+/* VancouverTec Store - Layout Fix 100% */
+
+/* Single Product Layout Corrigido */
+.woocommerce div.product {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.woocommerce div.product .summary {
+    background: none;
+    padding: 0;
+}
+
+.vt-product-header h1 {
+    font-size: 2rem;
+    color: var(--vt-neutral-900);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.vt-price-section {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 2px solid var(--vt-blue-600);
+    margin: 1.5rem 0;
+}
+
+.vt-price-section .price {
+    font-size: 2rem;
+    color: var(--vt-blue-600);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.vt-installments {
+    color: var(--vt-neutral-600);
+    font-size: 0.875rem;
+}
+
+.vt-trust-badges {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-radius: 1rem;
+    border: 2px solid var(--vt-success-500);
+}
+
+.vt-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: var(--vt-success-700);
+}
+
+.vt-trust-item .vt-icon {
+    font-size: 1.25rem;
+}
+
+/* Specifications */
+.vt-specifications {
+    background: var(--vt-neutral-50);
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+    border: 1px solid var(--vt-neutral-200);
+}
+
+.vt-specifications h3 {
+    color: var(--vt-blue-600);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.vt-specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.vt-spec-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--vt-blue-600);
+}
+
+/* Cart Layout */
+.woocommerce table.cart {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.woocommerce table.cart th {
+    background: var(--vt-blue-600);
+    color: white;
+    font-weight: 600;
+    padding: 1rem;
+    border: none;
+}
+
+.woocommerce table.cart td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--vt-neutral-100);
+}
+
+/* Shop Layout */
+.woocommerce ul.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.woocommerce ul.products li.product {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.woocommerce ul.products li.product:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 102, 204, 0.15);
+    border-color: var(--vt-blue-600);
+}
+
+.woocommerce ul.products li.product img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.woocommerce ul.products li.product .woocommerce-loop-product__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--vt-neutral-800);
+    margin: 1rem;
+    line-height: 1.4;
+}
+
+.woocommerce ul.products li.product .price {
+    color: var(--vt-blue-600);
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin: 0 1rem 1rem;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .vt-trust-badges {
+        grid-template-columns: 1fr;
+    }
+    
+    .vt-specs-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .woocommerce ul.products {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Page Templates */
+.vt-page-content,
+.vt-single-content {
+    padding: 2rem 0;
+    min-height: 50vh;
+}
+
+.vt-page-article,
+.vt-single-article {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.vt-page-title,
+.vt-single-title {
+    color: var(--vt-blue-600);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.vt-single-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--vt-neutral-200);
+    color: var(--vt-neutral-600);
+}
+
+.vt-single-featured {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.vt-single-featured img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 1rem;
+}
+
+/* Garantir que o conteúdo não fique muito curto */
+.vt-main-content {
+    min-height: calc(100vh - 300px);
+}
+
+@media (max-width: 768px) {
+    .vt-page-title,
+    .vt-single-title {
+        font-size: 2rem;
+    }
+    
+    .vt-single-meta {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+}

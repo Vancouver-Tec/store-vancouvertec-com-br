@@ -1,0 +1,61 @@
+/* VancouverTec Digital Manager - Plugin Styles */
+.vt-specifications {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+    border: 2px solid var(--vt-blue-600, #0066CC);
+}
+
+.vt-specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.vt-spec-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.vt-download-button {
+    background: var(--vt-success-500, #10B981);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.vt-download-button:hover {
+    background: var(--vt-success-600, #059669);
+    transform: translateY(-1px);
+}
+
+.vt-admin-dashboard .vt-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.vt-stat-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-left: 4px solid var(--vt-blue-600, #0066CC);
+}
+
+.vt-stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--vt-blue-600, #0066CC);
+    margin-top: 1rem;
+}
